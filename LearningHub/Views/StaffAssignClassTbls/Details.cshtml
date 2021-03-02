@@ -1,0 +1,34 @@
+﻿@model LearningHub.Models.StaffAssignClassTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StaffAssignClassTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassTbl.ClassName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassTbl.ClassName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StaffTbl.StaffName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StaffTbl.StaffName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AllotedClassID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

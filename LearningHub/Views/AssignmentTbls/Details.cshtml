@@ -1,0 +1,58 @@
+﻿@model LearningHub.Models.AssignmentTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssignmentTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadLineOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeadLineOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectTbl.SubjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectTbl.SubjectName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AssignmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

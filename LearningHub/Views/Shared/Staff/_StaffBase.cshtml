@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title - Hackbal Learning</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/Images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Images/favicon/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Images/favicon/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/Images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/Images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/Images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/Images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    @Styles.Render("~/Content/css")
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link href="~/Content/AdminPanel/HackbalLearning.css" rel="stylesheet" />
+    @if (IsSectionDefined("Styles"))
+    {
+        @RenderSection("Styles", required: false)
+    }
+</head>
+<body class="hold-transition skin-purple sidebar-mini">
+
+    <div class="wrapper">
+
+        @Html.Partial("Staff/_StaffHeader")
+
+        @Html.Partial("Staff/_StaffSidebar")
+
+        @RenderBody()
+
+        @Html.Partial("Staff/_StaffFooter")
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+    @*Error Model*@
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="alert alert-danger" role="alert">
+                <div id="errormsg"></div>
+            </div>
+        </div>
+    </div>
+    @*Error Model*@
+    @Scripts.Render("~/bundles/jquery")
+
+    @Scripts.Render("~/bundles/lib")
+
+    @*<script src="~/Scripts/AdminPanel/HackbalLearning.js"></script>*@
+    <script>
+        @if(ViewBag.Error != null) {
+        <text>
+        $('#myModal').modal('show');
+        $('#errormsg').text("@ViewBag.Error");
+        </text>
+        }
+        setTimeout(function () { $('#myModal').modal('hide'); }, 2000);
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

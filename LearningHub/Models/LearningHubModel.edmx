@@ -1,0 +1,2072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LearningHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminTbl">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredID" Type="bigint" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="APITokenTbl">
+          <Key>
+            <PropertyRef Name="APITokenID" />
+          </Key>
+          <Property Name="APITokenID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APIName" Type="varchar" MaxLength="50" />
+          <Property Name="APIKey" Type="varchar" MaxLength="50" />
+          <Property Name="SenderID" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsTest" Type="bit" />
+          <Property Name="IsChannel" Type="varchar" MaxLength="50" />
+          <Property Name="IsUnicord" Type="varchar" MaxLength="50" />
+          <Property Name="IsFlash" Type="varchar" MaxLength="50" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="Route" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AssignmentTbl">
+          <Key>
+            <PropertyRef Name="AssignmentID" />
+          </Key>
+          <Property Name="AssignmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" />
+          <Property Name="Topic" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="DeadLineOn" Type="datetime" />
+          <Property Name="PublishedOn" Type="datetime" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ChapterTbl">
+          <Key>
+            <PropertyRef Name="ChapterID" />
+          </Key>
+          <Property Name="ChapterID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" />
+          <Property Name="ChapterName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ClassTbl">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptID" Type="int" />
+          <Property Name="ClassName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CollegeTbl">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CollegeName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="CredentialTbl">
+          <Key>
+            <PropertyRef Name="CredID" />
+          </Key>
+          <Property Name="CredID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DepartmentTbl">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ExamQuestionTbl">
+          <Key>
+            <PropertyRef Name="ExamQuestionID" />
+          </Key>
+          <Property Name="ExamQuestionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamID" Type="bigint" />
+          <Property Name="Question" Type="varchar" MaxLength="500" />
+          <Property Name="OptionA" Type="varchar" MaxLength="50" />
+          <Property Name="OptionB" Type="varchar" MaxLength="50" />
+          <Property Name="OptionC" Type="varchar" MaxLength="50" />
+          <Property Name="OptionD" Type="varchar" MaxLength="50" />
+          <Property Name="Answer" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ExamTbl">
+          <Key>
+            <PropertyRef Name="ExamID" />
+          </Key>
+          <Property Name="ExamID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="bigint" />
+          <Property Name="ExamName" Type="varchar" MaxLength="50" />
+          <Property Name="ConductDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MessageTbl">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageText" Type="varchar(max)" />
+          <Property Name="FirstPara" Type="varchar" MaxLength="50" />
+          <Property Name="SecondPara" Type="varchar" MaxLength="50" />
+          <Property Name="ThirdPara" Type="varchar" MaxLength="50" />
+          <Property Name="FourthPara" Type="varchar" MaxLength="50" />
+          <Property Name="FifthPara" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MesSendTbl">
+          <Key>
+            <PropertyRef Name="MsgSendID" />
+          </Key>
+          <Property Name="MsgSendID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MsgTransID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="MessageText" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MsgTransTbl">
+          <Key>
+            <PropertyRef Name="MsgTransID" />
+          </Key>
+          <Property Name="MsgTransID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ErrCode" Type="varchar" MaxLength="50" />
+          <Property Name="ErrMsg" Type="varchar" MaxLength="50" />
+          <Property Name="JobId" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ParentTbl">
+          <Key>
+            <PropertyRef Name="ParentID" />
+          </Key>
+          <Property Name="ParentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredID" Type="bigint" />
+          <Property Name="ParentName" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleTbl">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StaffAssignClassTbl">
+          <Key>
+            <PropertyRef Name="AllotedClassID" />
+          </Key>
+          <Property Name="AllotedClassID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" />
+          <Property Name="ClassID" Type="int" />
+        </EntityType>
+        <EntityType Name="StaffAttendanceTbl">
+          <Key>
+            <PropertyRef Name="StaffAttendanceID" />
+          </Key>
+          <Property Name="StaffAttendanceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaffID" Type="bigint" />
+          <Property Name="PresentDate" Type="datetime" />
+          <Property Name="IsLogin" Type="datetime" />
+          <Property Name="IsLogout" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StaffTbl">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredID" Type="bigint" />
+          <Property Name="StaffName" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="SkypeUserName" Type="varchar" MaxLength="50" />
+          <Property Name="IsHead" Type="bit" />
+          <Property Name="DeptID" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentAssignmentTbl">
+          <Key>
+            <PropertyRef Name="StudentAssignmentID" />
+          </Key>
+          <Property Name="StudentAssignmentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="bigint" />
+          <Property Name="AssignmentID" Type="bigint" />
+          <Property Name="MeterailPath" Type="varchar" MaxLength="50" />
+          <Property Name="AssignmentMark" Type="int" />
+          <Property Name="SubmittedDate" Type="datetime" />
+          <Property Name="IsStaffApprove" Type="bit" />
+          <Property Name="IsHODApprove" Type="bit" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentClassAttend">
+          <Key>
+            <PropertyRef Name="StudentClassAttID" />
+          </Key>
+          <Property Name="StudentClassAttID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="bigint" />
+          <Property Name="SubjectID" Type="bigint" />
+          <Property Name="PresentDate" Type="datetime" />
+          <Property Name="OpenTime" Type="datetime" />
+          <Property Name="CloseTime" Type="datetime" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentExamResultTbl">
+          <Key>
+            <PropertyRef Name="StudentExamResultID" />
+          </Key>
+          <Property Name="StudentExamResultID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentExamID" Type="bigint" />
+          <Property Name="ExamQuestionID" Type="bigint" />
+          <Property Name="SelectedAnswer" Type="varchar" MaxLength="50" />
+          <Property Name="IsTrue" Type="bit" />
+          <Property Name="AttendTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StudentExamTbl">
+          <Key>
+            <PropertyRef Name="StudentExamID" />
+          </Key>
+          <Property Name="StudentExamID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="bigint" />
+          <Property Name="ExamID" Type="bigint" />
+          <Property Name="TotalAttendQuestion" Type="int" />
+          <Property Name="TotalCurrectAnwer" Type="int" />
+          <Property Name="TotalWrongAnswer" Type="int" />
+        </EntityType>
+        <EntityType Name="StudentsAttentanceTbl">
+          <Key>
+            <PropertyRef Name="StudentAttentanceID" />
+          </Key>
+          <Property Name="StudentAttentanceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="bigint" />
+          <Property Name="PresentDate" Type="datetime" />
+          <Property Name="IsLogin" Type="datetime" />
+          <Property Name="IsLogout" Type="datetime" />
+          <Property Name="LoginMinites" Type="int" />
+          <Property Name="IsStaffApprove" Type="bit" />
+          <Property Name="IsHODApprove" Type="bit" />
+        </EntityType>
+        <EntityType Name="StudentTbl">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredID" Type="bigint" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="StudentName" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="StudyMeterialTbl">
+          <Key>
+            <PropertyRef Name="StudyMeterialID" />
+          </Key>
+          <Property Name="StudyMeterialID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChapterID" Type="bigint" />
+          <Property Name="MeterialPath" Type="varchar" MaxLength="500" />
+          <Property Name="StudyMeterialTitle" Type="varchar" MaxLength="50" />
+          <Property Name="PublishedOn" Type="datetime" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="EnteredOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SubjectTbl">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassID" Type="int" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SuperAdminTbl">
+          <Key>
+            <PropertyRef Name="SuperAdminID" />
+          </Key>
+          <Property Name="SuperAdminID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CredID" Type="bigint" Nullable="false" />
+          <Property Name="SuperAdminName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VideoTbl">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ChapterID" Type="bigint" />
+          <Property Name="VideoLink" Type="varchar(max)" />
+          <Property Name="VideoTitle" Type="varchar" MaxLength="200" />
+          <Property Name="PublishedOn" Type="datetime" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="EnteredOn" Type="datetime" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_AdminTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="AdminTbl" Type="Self.AdminTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="AdminTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssaignmentTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="AssignmentTbl" Type="Self.AssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="AssignmentTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChapterTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="ChapterTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassTbl_DepartmentTbl">
+          <End Role="DepartmentTbl" Type="Self.DepartmentTbl" Multiplicity="0..1" />
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTbl">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="ClassTbl">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CredentialTbl_RoleTbl">
+          <End Role="RoleTbl" Type="Self.RoleTbl" Multiplicity="1" />
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTbl">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="CredentialTbl">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamQuestionTbl_ExamTbl">
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="0..1" />
+          <End Role="ExamQuestionTbl" Type="Self.ExamQuestionTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Principal>
+            <Dependent Role="ExamQuestionTbl">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="ExamTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesSendTbl_MesSendTbl">
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="0..1" />
+          <End Role="MesSendTbl" Type="Self.MesSendTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentTbl">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="MesSendTbl">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesSendTbl_MsgTransTbl">
+          <End Role="MsgTransTbl" Type="Self.MsgTransTbl" Multiplicity="0..1" />
+          <End Role="MesSendTbl" Type="Self.MesSendTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsgTransTbl">
+              <PropertyRef Name="MsgTransID" />
+            </Principal>
+            <Dependent Role="MesSendTbl">
+              <PropertyRef Name="MsgTransID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="ParentTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAssignClassTbl_ClassTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="StaffAssignClassTbl" Type="Self.StaffAssignClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="StaffAssignClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAssignClassTbl_StaffTbl">
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="0..1" />
+          <End Role="StaffAssignClassTbl" Type="Self.StaffAssignClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffTbl">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="StaffAssignClassTbl">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAttendance_StaffTbl">
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="0..1" />
+          <End Role="StaffAttendanceTbl" Type="Self.StaffAttendanceTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffTbl">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="StaffAttendanceTbl">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="StaffTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffTbl_StaffTbl">
+          <End Role="DepartmentTbl" Type="Self.DepartmentTbl" Multiplicity="0..1" />
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTbl">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="StaffTbl">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssignmentTbl_AssignmentTbl">
+          <End Role="AssignmentTbl" Type="Self.AssignmentTbl" Multiplicity="0..1" />
+          <End Role="StudentAssignmentTbl" Type="Self.StudentAssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignmentTbl">
+              <PropertyRef Name="AssignmentID" />
+            </Principal>
+            <Dependent Role="StudentAssignmentTbl">
+              <PropertyRef Name="AssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssignmentTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentAssignmentTbl" Type="Self.StudentAssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentAssignmentTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassAttend_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentClassAttend" Type="Self.StudentClassAttend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentClassAttend">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassAttend_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="StudentClassAttend" Type="Self.StudentClassAttend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="StudentClassAttend">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamResultTbl_ExamQuestionTbl">
+          <End Role="ExamQuestionTbl" Type="Self.ExamQuestionTbl" Multiplicity="0..1" />
+          <End Role="StudentExamResultTbl" Type="Self.StudentExamResultTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamQuestionTbl">
+              <PropertyRef Name="ExamQuestionID" />
+            </Principal>
+            <Dependent Role="StudentExamResultTbl">
+              <PropertyRef Name="ExamQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamResultTbl_StudentExamTbl">
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="0..1" />
+          <End Role="StudentExamResultTbl" Type="Self.StudentExamResultTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentExamTbl">
+              <PropertyRef Name="StudentExamID" />
+            </Principal>
+            <Dependent Role="StudentExamResultTbl">
+              <PropertyRef Name="StudentExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamTbl_ExamTbl">
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="0..1" />
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Principal>
+            <Dependent Role="StudentExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentExamTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsAttentanceTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentsAttentanceTbl" Type="Self.StudentsAttentanceTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentsAttentanceTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_ClassTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_ParentTbl">
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentTbl">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyMeterialTbl_ChapterTbl">
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="0..1" />
+          <End Role="StudyMeterialTbl" Type="Self.StudyMeterialTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChapterTbl">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="StudyMeterialTbl">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectTbl_SubjectTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="SubjectTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SuperAdminTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="1" />
+          <End Role="SuperAdminTbl" Type="Self.SuperAdminTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="SuperAdminTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoTbl_ChapterTbl">
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="0..1" />
+          <End Role="VideoTbl" Type="Self.VideoTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChapterTbl">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="VideoTbl">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LearningHubModelStoreContainer">
+          <EntitySet Name="AdminTbl" EntityType="Self.AdminTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="APITokenTbl" EntityType="Self.APITokenTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssignmentTbl" EntityType="Self.AssignmentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChapterTbl" EntityType="Self.ChapterTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassTbl" EntityType="Self.ClassTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CollegeTbl" EntityType="Self.CollegeTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CredentialTbl" EntityType="Self.CredentialTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartmentTbl" EntityType="Self.DepartmentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamQuestionTbl" EntityType="Self.ExamQuestionTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExamTbl" EntityType="Self.ExamTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MessageTbl" EntityType="Self.MessageTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MesSendTbl" EntityType="Self.MesSendTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MsgTransTbl" EntityType="Self.MsgTransTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParentTbl" EntityType="Self.ParentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RoleTbl" EntityType="Self.RoleTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffAssignClassTbl" EntityType="Self.StaffAssignClassTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffAttendanceTbl" EntityType="Self.StaffAttendanceTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaffTbl" EntityType="Self.StaffTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentAssignmentTbl" EntityType="Self.StudentAssignmentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentClassAttend" EntityType="Self.StudentClassAttend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentExamResultTbl" EntityType="Self.StudentExamResultTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentExamTbl" EntityType="Self.StudentExamTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentsAttentanceTbl" EntityType="Self.StudentsAttentanceTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentTbl" EntityType="Self.StudentTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudyMeterialTbl" EntityType="Self.StudyMeterialTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectTbl" EntityType="Self.SubjectTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SuperAdminTbl" EntityType="Self.SuperAdminTbl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VideoTbl" EntityType="Self.VideoTbl" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdminTbl_CredentialTbl" Association="Self.FK_AdminTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+            <End Role="AdminTbl" EntitySet="AdminTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssaignmentTbl_SubjectTbl" Association="Self.FK_AssaignmentTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbl" />
+            <End Role="AssignmentTbl" EntitySet="AssignmentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChapterTbl_SubjectTbl" Association="Self.FK_ChapterTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbl" />
+            <End Role="ChapterTbl" EntitySet="ChapterTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassTbl_DepartmentTbl" Association="Self.FK_ClassTbl_DepartmentTbl">
+            <End Role="DepartmentTbl" EntitySet="DepartmentTbl" />
+            <End Role="ClassTbl" EntitySet="ClassTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CredentialTbl_RoleTbl" Association="Self.FK_CredentialTbl_RoleTbl">
+            <End Role="RoleTbl" EntitySet="RoleTbl" />
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamQuestionTbl_ExamTbl" Association="Self.FK_ExamQuestionTbl_ExamTbl">
+            <End Role="ExamTbl" EntitySet="ExamTbl" />
+            <End Role="ExamQuestionTbl" EntitySet="ExamQuestionTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamTbl_SubjectTbl" Association="Self.FK_ExamTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbl" />
+            <End Role="ExamTbl" EntitySet="ExamTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesSendTbl_MesSendTbl" Association="Self.FK_MesSendTbl_MesSendTbl">
+            <End Role="ParentTbl" EntitySet="ParentTbl" />
+            <End Role="MesSendTbl" EntitySet="MesSendTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesSendTbl_MsgTransTbl" Association="Self.FK_MesSendTbl_MsgTransTbl">
+            <End Role="MsgTransTbl" EntitySet="MsgTransTbl" />
+            <End Role="MesSendTbl" EntitySet="MesSendTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentTbl_CredentialTbl" Association="Self.FK_ParentTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+            <End Role="ParentTbl" EntitySet="ParentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAssignClassTbl_ClassTbl" Association="Self.FK_StaffAssignClassTbl_ClassTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbl" />
+            <End Role="StaffAssignClassTbl" EntitySet="StaffAssignClassTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAssignClassTbl_StaffTbl" Association="Self.FK_StaffAssignClassTbl_StaffTbl">
+            <End Role="StaffTbl" EntitySet="StaffTbl" />
+            <End Role="StaffAssignClassTbl" EntitySet="StaffAssignClassTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAttendance_StaffTbl" Association="Self.FK_StaffAttendance_StaffTbl">
+            <End Role="StaffTbl" EntitySet="StaffTbl" />
+            <End Role="StaffAttendanceTbl" EntitySet="StaffAttendanceTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffTbl_CredentialTbl" Association="Self.FK_StaffTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+            <End Role="StaffTbl" EntitySet="StaffTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffTbl_StaffTbl" Association="Self.FK_StaffTbl_StaffTbl">
+            <End Role="DepartmentTbl" EntitySet="DepartmentTbl" />
+            <End Role="StaffTbl" EntitySet="StaffTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssignmentTbl_AssignmentTbl" Association="Self.FK_StudentAssignmentTbl_AssignmentTbl">
+            <End Role="AssignmentTbl" EntitySet="AssignmentTbl" />
+            <End Role="StudentAssignmentTbl" EntitySet="StudentAssignmentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssignmentTbl_StudentTbl" Association="Self.FK_StudentAssignmentTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+            <End Role="StudentAssignmentTbl" EntitySet="StudentAssignmentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassAttend_StudentTbl" Association="Self.FK_StudentClassAttend_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+            <End Role="StudentClassAttend" EntitySet="StudentClassAttend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassAttend_SubjectTbl" Association="Self.FK_StudentClassAttend_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbl" />
+            <End Role="StudentClassAttend" EntitySet="StudentClassAttend" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamResultTbl_ExamQuestionTbl" Association="Self.FK_StudentExamResultTbl_ExamQuestionTbl">
+            <End Role="ExamQuestionTbl" EntitySet="ExamQuestionTbl" />
+            <End Role="StudentExamResultTbl" EntitySet="StudentExamResultTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamResultTbl_StudentExamTbl" Association="Self.FK_StudentExamResultTbl_StudentExamTbl">
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbl" />
+            <End Role="StudentExamResultTbl" EntitySet="StudentExamResultTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamTbl_ExamTbl" Association="Self.FK_StudentExamTbl_ExamTbl">
+            <End Role="ExamTbl" EntitySet="ExamTbl" />
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamTbl_StudentTbl" Association="Self.FK_StudentExamTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsAttentanceTbl_StudentTbl" Association="Self.FK_StudentsAttentanceTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+            <End Role="StudentsAttentanceTbl" EntitySet="StudentsAttentanceTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_ClassTbl" Association="Self.FK_StudentTbl_ClassTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbl" />
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_CredentialTbl" Association="Self.FK_StudentTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_ParentTbl" Association="Self.FK_StudentTbl_ParentTbl">
+            <End Role="ParentTbl" EntitySet="ParentTbl" />
+            <End Role="StudentTbl" EntitySet="StudentTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyMeterialTbl_ChapterTbl" Association="Self.FK_StudyMeterialTbl_ChapterTbl">
+            <End Role="ChapterTbl" EntitySet="ChapterTbl" />
+            <End Role="StudyMeterialTbl" EntitySet="StudyMeterialTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectTbl_SubjectTbl" Association="Self.FK_SubjectTbl_SubjectTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbl" />
+            <End Role="SubjectTbl" EntitySet="SubjectTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SuperAdminTbl_CredentialTbl" Association="Self.FK_SuperAdminTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbl" />
+            <End Role="SuperAdminTbl" EntitySet="SuperAdminTbl" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoTbl_ChapterTbl" Association="Self.FK_VideoTbl_ChapterTbl">
+            <End Role="ChapterTbl" EntitySet="ChapterTbl" />
+            <End Role="VideoTbl" EntitySet="VideoTbl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LearningHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminTbl">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredID" Type="Int64" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_AdminTbl_CredentialTbl" FromRole="AdminTbl" ToRole="CredentialTbl" />
+        </EntityType>
+        <EntityType Name="APITokenTbl">
+          <Key>
+            <PropertyRef Name="APITokenID" />
+          </Key>
+          <Property Name="APITokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APIName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APIKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SenderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsTest" Type="Boolean" />
+          <Property Name="IsChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUnicord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Route" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AssignmentTbl">
+          <Key>
+            <PropertyRef Name="AssignmentID" />
+          </Key>
+          <Property Name="AssignmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int64" />
+          <Property Name="Topic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DeadLineOn" Type="DateTime" Precision="3" />
+          <Property Name="PublishedOn" Type="DateTime" Precision="3" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="SubjectTbl" Relationship="Self.FK_AssaignmentTbl_SubjectTbl" FromRole="AssignmentTbl" ToRole="SubjectTbl" />
+          <NavigationProperty Name="StudentAssignmentTbls" Relationship="Self.FK_StudentAssignmentTbl_AssignmentTbl" FromRole="AssignmentTbl" ToRole="StudentAssignmentTbl" />
+        </EntityType>
+        <EntityType Name="ChapterTbl">
+          <Key>
+            <PropertyRef Name="ChapterID" />
+          </Key>
+          <Property Name="ChapterID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int64" />
+          <Property Name="ChapterName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubjectTbl" Relationship="Self.FK_ChapterTbl_SubjectTbl" FromRole="ChapterTbl" ToRole="SubjectTbl" />
+          <NavigationProperty Name="StudyMeterialTbls" Relationship="Self.FK_StudyMeterialTbl_ChapterTbl" FromRole="ChapterTbl" ToRole="StudyMeterialTbl" />
+          <NavigationProperty Name="VideoTbls" Relationship="Self.FK_VideoTbl_ChapterTbl" FromRole="ChapterTbl" ToRole="VideoTbl" />
+        </EntityType>
+        <EntityType Name="ClassTbl">
+          <Key>
+            <PropertyRef Name="ClassID" />
+          </Key>
+          <Property Name="ClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptID" Type="Int32" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DepartmentTbl" Relationship="Self.FK_ClassTbl_DepartmentTbl" FromRole="ClassTbl" ToRole="DepartmentTbl" />
+          <NavigationProperty Name="StaffAssignClassTbls" Relationship="Self.FK_StaffAssignClassTbl_ClassTbl" FromRole="ClassTbl" ToRole="StaffAssignClassTbl" />
+          <NavigationProperty Name="StudentTbls" Relationship="Self.FK_StudentTbl_ClassTbl" FromRole="ClassTbl" ToRole="StudentTbl" />
+          <NavigationProperty Name="SubjectTbls" Relationship="Self.FK_SubjectTbl_SubjectTbl" FromRole="ClassTbl" ToRole="SubjectTbl" />
+        </EntityType>
+        <EntityType Name="CollegeTbl">
+          <Key>
+            <PropertyRef Name="CollegeID" />
+          </Key>
+          <Property Name="CollegeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CollegeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CredentialTbl">
+          <Key>
+            <PropertyRef Name="CredID" />
+          </Key>
+          <Property Name="CredID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AdminTbls" Relationship="Self.FK_AdminTbl_CredentialTbl" FromRole="CredentialTbl" ToRole="AdminTbl" />
+          <NavigationProperty Name="RoleTbl" Relationship="Self.FK_CredentialTbl_RoleTbl" FromRole="CredentialTbl" ToRole="RoleTbl" />
+          <NavigationProperty Name="ParentTbls" Relationship="Self.FK_ParentTbl_CredentialTbl" FromRole="CredentialTbl" ToRole="ParentTbl" />
+          <NavigationProperty Name="StaffTbls" Relationship="Self.FK_StaffTbl_CredentialTbl" FromRole="CredentialTbl" ToRole="StaffTbl" />
+          <NavigationProperty Name="StudentTbls" Relationship="Self.FK_StudentTbl_CredentialTbl" FromRole="CredentialTbl" ToRole="StudentTbl" />
+          <NavigationProperty Name="SuperAdminTbls" Relationship="Self.FK_SuperAdminTbl_CredentialTbl" FromRole="CredentialTbl" ToRole="SuperAdminTbl" />
+        </EntityType>
+        <EntityType Name="DepartmentTbl">
+          <Key>
+            <PropertyRef Name="DeptID" />
+          </Key>
+          <Property Name="DeptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ClassTbls" Relationship="Self.FK_ClassTbl_DepartmentTbl" FromRole="DepartmentTbl" ToRole="ClassTbl" />
+          <NavigationProperty Name="StaffTbls" Relationship="Self.FK_StaffTbl_StaffTbl" FromRole="DepartmentTbl" ToRole="StaffTbl" />
+        </EntityType>
+        <EntityType Name="ExamQuestionTbl">
+          <Key>
+            <PropertyRef Name="ExamQuestionID" />
+          </Key>
+          <Property Name="ExamQuestionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamID" Type="Int64" />
+          <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OptionA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OptionD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ExamTbl" Relationship="Self.FK_ExamQuestionTbl_ExamTbl" FromRole="ExamQuestionTbl" ToRole="ExamTbl" />
+          <NavigationProperty Name="StudentExamResultTbls" Relationship="Self.FK_StudentExamResultTbl_ExamQuestionTbl" FromRole="ExamQuestionTbl" ToRole="StudentExamResultTbl" />
+        </EntityType>
+        <EntityType Name="ExamTbl">
+          <Key>
+            <PropertyRef Name="ExamID" />
+          </Key>
+          <Property Name="ExamID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Int64" />
+          <Property Name="ExamName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConductDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExamQuestionTbls" Relationship="Self.FK_ExamQuestionTbl_ExamTbl" FromRole="ExamTbl" ToRole="ExamQuestionTbl" />
+          <NavigationProperty Name="SubjectTbl" Relationship="Self.FK_ExamTbl_SubjectTbl" FromRole="ExamTbl" ToRole="SubjectTbl" />
+          <NavigationProperty Name="StudentExamTbls" Relationship="Self.FK_StudentExamTbl_ExamTbl" FromRole="ExamTbl" ToRole="StudentExamTbl" />
+        </EntityType>
+        <EntityType Name="MessageTbl">
+          <Key>
+            <PropertyRef Name="MsgID" />
+          </Key>
+          <Property Name="MsgID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FirstPara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondPara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ThirdPara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FourthPara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FifthPara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MesSendTbl">
+          <Key>
+            <PropertyRef Name="MsgSendID" />
+          </Key>
+          <Property Name="MsgSendID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MsgTransID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="MessageText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ParentTbl" Relationship="Self.FK_MesSendTbl_MesSendTbl" FromRole="MesSendTbl" ToRole="ParentTbl" />
+          <NavigationProperty Name="MsgTransTbl" Relationship="Self.FK_MesSendTbl_MsgTransTbl" FromRole="MesSendTbl" ToRole="MsgTransTbl" />
+        </EntityType>
+        <EntityType Name="MsgTransTbl">
+          <Key>
+            <PropertyRef Name="MsgTransID" />
+          </Key>
+          <Property Name="MsgTransID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ErrCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ErrMsg" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="JobId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MesSendTbls" Relationship="Self.FK_MesSendTbl_MsgTransTbl" FromRole="MsgTransTbl" ToRole="MesSendTbl" />
+        </EntityType>
+        <EntityType Name="ParentTbl">
+          <Key>
+            <PropertyRef Name="ParentID" />
+          </Key>
+          <Property Name="ParentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredID" Type="Int64" />
+          <Property Name="ParentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_ParentTbl_CredentialTbl" FromRole="ParentTbl" ToRole="CredentialTbl" />
+          <NavigationProperty Name="MesSendTbls" Relationship="Self.FK_MesSendTbl_MesSendTbl" FromRole="ParentTbl" ToRole="MesSendTbl" />
+          <NavigationProperty Name="StudentTbls" Relationship="Self.FK_StudentTbl_ParentTbl" FromRole="ParentTbl" ToRole="StudentTbl" />
+        </EntityType>
+        <EntityType Name="RoleTbl">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CredentialTbls" Relationship="Self.FK_CredentialTbl_RoleTbl" FromRole="RoleTbl" ToRole="CredentialTbl" />
+        </EntityType>
+        <EntityType Name="StaffAssignClassTbl">
+          <Key>
+            <PropertyRef Name="AllotedClassID" />
+          </Key>
+          <Property Name="AllotedClassID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffID" Type="Int64" />
+          <Property Name="ClassID" Type="Int32" />
+          <NavigationProperty Name="ClassTbl" Relationship="Self.FK_StaffAssignClassTbl_ClassTbl" FromRole="StaffAssignClassTbl" ToRole="ClassTbl" />
+          <NavigationProperty Name="StaffTbl" Relationship="Self.FK_StaffAssignClassTbl_StaffTbl" FromRole="StaffAssignClassTbl" ToRole="StaffTbl" />
+        </EntityType>
+        <EntityType Name="StaffAttendanceTbl">
+          <Key>
+            <PropertyRef Name="StaffAttendanceID" />
+          </Key>
+          <Property Name="StaffAttendanceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaffID" Type="Int64" />
+          <Property Name="PresentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLogin" Type="DateTime" Precision="3" />
+          <Property Name="IsLogout" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StaffTbl" Relationship="Self.FK_StaffAttendance_StaffTbl" FromRole="StaffAttendanceTbl" ToRole="StaffTbl" />
+        </EntityType>
+        <EntityType Name="StaffTbl">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredID" Type="Int64" />
+          <Property Name="StaffName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="SkypeUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsHead" Type="Boolean" />
+          <Property Name="DeptID" Type="Int32" />
+          <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_StaffTbl_CredentialTbl" FromRole="StaffTbl" ToRole="CredentialTbl" />
+          <NavigationProperty Name="DepartmentTbl" Relationship="Self.FK_StaffTbl_StaffTbl" FromRole="StaffTbl" ToRole="DepartmentTbl" />
+          <NavigationProperty Name="StaffAssignClassTbls" Relationship="Self.FK_StaffAssignClassTbl_StaffTbl" FromRole="StaffTbl" ToRole="StaffAssignClassTbl" />
+          <NavigationProperty Name="StaffAttendanceTbls" Relationship="Self.FK_StaffAttendance_StaffTbl" FromRole="StaffTbl" ToRole="StaffAttendanceTbl" />
+        </EntityType>
+        <EntityType Name="StudentAssignmentTbl">
+          <Key>
+            <PropertyRef Name="StudentAssignmentID" />
+          </Key>
+          <Property Name="StudentAssignmentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int64" />
+          <Property Name="AssignmentID" Type="Int64" />
+          <Property Name="MeterailPath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssignmentMark" Type="Int32" />
+          <Property Name="SubmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsStaffApprove" Type="Boolean" />
+          <Property Name="IsHODApprove" Type="Boolean" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AssignmentTbl" Relationship="Self.FK_StudentAssignmentTbl_AssignmentTbl" FromRole="StudentAssignmentTbl" ToRole="AssignmentTbl" />
+          <NavigationProperty Name="StudentTbl" Relationship="Self.FK_StudentAssignmentTbl_StudentTbl" FromRole="StudentAssignmentTbl" ToRole="StudentTbl" />
+        </EntityType>
+        <EntityType Name="StudentClassAttend">
+          <Key>
+            <PropertyRef Name="StudentClassAttID" />
+          </Key>
+          <Property Name="StudentClassAttID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int64" />
+          <Property Name="SubjectID" Type="Int64" />
+          <Property Name="PresentDate" Type="DateTime" Precision="3" />
+          <Property Name="OpenTime" Type="DateTime" Precision="3" />
+          <Property Name="CloseTime" Type="DateTime" Precision="3" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StudentTbl" Relationship="Self.FK_StudentClassAttend_StudentTbl" FromRole="StudentClassAttend" ToRole="StudentTbl" />
+          <NavigationProperty Name="SubjectTbl" Relationship="Self.FK_StudentClassAttend_SubjectTbl" FromRole="StudentClassAttend" ToRole="SubjectTbl" />
+        </EntityType>
+        <EntityType Name="StudentExamResultTbl">
+          <Key>
+            <PropertyRef Name="StudentExamResultID" />
+          </Key>
+          <Property Name="StudentExamResultID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentExamID" Type="Int64" />
+          <Property Name="ExamQuestionID" Type="Int64" />
+          <Property Name="SelectedAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsTrue" Type="Boolean" />
+          <Property Name="AttendTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExamQuestionTbl" Relationship="Self.FK_StudentExamResultTbl_ExamQuestionTbl" FromRole="StudentExamResultTbl" ToRole="ExamQuestionTbl" />
+          <NavigationProperty Name="StudentExamTbl" Relationship="Self.FK_StudentExamResultTbl_StudentExamTbl" FromRole="StudentExamResultTbl" ToRole="StudentExamTbl" />
+        </EntityType>
+        <EntityType Name="StudentExamTbl">
+          <Key>
+            <PropertyRef Name="StudentExamID" />
+          </Key>
+          <Property Name="StudentExamID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int64" />
+          <Property Name="ExamID" Type="Int64" />
+          <Property Name="TotalAttendQuestion" Type="Int32" />
+          <Property Name="TotalCurrectAnwer" Type="Int32" />
+          <Property Name="TotalWrongAnswer" Type="Int32" />
+          <NavigationProperty Name="ExamTbl" Relationship="Self.FK_StudentExamTbl_ExamTbl" FromRole="StudentExamTbl" ToRole="ExamTbl" />
+          <NavigationProperty Name="StudentExamResultTbls" Relationship="Self.FK_StudentExamResultTbl_StudentExamTbl" FromRole="StudentExamTbl" ToRole="StudentExamResultTbl" />
+          <NavigationProperty Name="StudentTbl" Relationship="Self.FK_StudentExamTbl_StudentTbl" FromRole="StudentExamTbl" ToRole="StudentTbl" />
+        </EntityType>
+        <EntityType Name="StudentsAttentanceTbl">
+          <Key>
+            <PropertyRef Name="StudentAttentanceID" />
+          </Key>
+          <Property Name="StudentAttentanceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int64" />
+          <Property Name="PresentDate" Type="DateTime" Precision="3" />
+          <Property Name="IsLogin" Type="DateTime" Precision="3" />
+          <Property Name="IsLogout" Type="DateTime" Precision="3" />
+          <Property Name="LoginMinites" Type="Int32" />
+          <Property Name="IsStaffApprove" Type="Boolean" />
+          <Property Name="IsHODApprove" Type="Boolean" />
+          <NavigationProperty Name="StudentTbl" Relationship="Self.FK_StudentsAttentanceTbl_StudentTbl" FromRole="StudentsAttentanceTbl" ToRole="StudentTbl" />
+        </EntityType>
+        <EntityType Name="StudentTbl">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredID" Type="Int64" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="StudentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="ClassTbl" Relationship="Self.FK_StudentTbl_ClassTbl" FromRole="StudentTbl" ToRole="ClassTbl" />
+          <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_StudentTbl_CredentialTbl" FromRole="StudentTbl" ToRole="CredentialTbl" />
+          <NavigationProperty Name="ParentTbl" Relationship="Self.FK_StudentTbl_ParentTbl" FromRole="StudentTbl" ToRole="ParentTbl" />
+          <NavigationProperty Name="StudentAssignmentTbls" Relationship="Self.FK_StudentAssignmentTbl_StudentTbl" FromRole="StudentTbl" ToRole="StudentAssignmentTbl" />
+          <NavigationProperty Name="StudentClassAttends" Relationship="Self.FK_StudentClassAttend_StudentTbl" FromRole="StudentTbl" ToRole="StudentClassAttend" />
+          <NavigationProperty Name="StudentExamTbls" Relationship="Self.FK_StudentExamTbl_StudentTbl" FromRole="StudentTbl" ToRole="StudentExamTbl" />
+          <NavigationProperty Name="StudentsAttentanceTbls" Relationship="Self.FK_StudentsAttentanceTbl_StudentTbl" FromRole="StudentTbl" ToRole="StudentsAttentanceTbl" />
+        </EntityType>
+        <EntityType Name="StudyMeterialTbl">
+          <Key>
+            <PropertyRef Name="StudyMeterialID" />
+          </Key>
+          <Property Name="StudyMeterialID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChapterID" Type="Int64" />
+          <Property Name="MeterialPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StudyMeterialTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedOn" Type="DateTime" Precision="3" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ChapterTbl" Relationship="Self.FK_StudyMeterialTbl_ChapterTbl" FromRole="StudyMeterialTbl" ToRole="ChapterTbl" />
+        </EntityType>
+        <EntityType Name="SubjectTbl">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassID" Type="Int32" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AssignmentTbls" Relationship="Self.FK_AssaignmentTbl_SubjectTbl" FromRole="SubjectTbl" ToRole="AssignmentTbl" />
+          <NavigationProperty Name="ChapterTbls" Relationship="Self.FK_ChapterTbl_SubjectTbl" FromRole="SubjectTbl" ToRole="ChapterTbl" />
+          <NavigationProperty Name="ClassTbl" Relationship="Self.FK_SubjectTbl_SubjectTbl" FromRole="SubjectTbl" ToRole="ClassTbl" />
+          <NavigationProperty Name="ExamTbls" Relationship="Self.FK_ExamTbl_SubjectTbl" FromRole="SubjectTbl" ToRole="ExamTbl" />
+          <NavigationProperty Name="StudentClassAttends" Relationship="Self.FK_StudentClassAttend_SubjectTbl" FromRole="SubjectTbl" ToRole="StudentClassAttend" />
+        </EntityType>
+        <EntityType Name="SuperAdminTbl">
+          <Key>
+            <PropertyRef Name="SuperAdminID" />
+          </Key>
+          <Property Name="SuperAdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CredID" Type="Int64" Nullable="false" />
+          <Property Name="SuperAdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_SuperAdminTbl_CredentialTbl" FromRole="SuperAdminTbl" ToRole="CredentialTbl" />
+        </EntityType>
+        <EntityType Name="VideoTbl">
+          <Key>
+            <PropertyRef Name="VideoID" />
+          </Key>
+          <Property Name="VideoID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ChapterID" Type="Int64" />
+          <Property Name="VideoLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="VideoTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PublishedOn" Type="DateTime" Precision="3" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ChapterTbl" Relationship="Self.FK_VideoTbl_ChapterTbl" FromRole="VideoTbl" ToRole="ChapterTbl" />
+        </EntityType>
+        <Association Name="FK_AdminTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="AdminTbl" Type="Self.AdminTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="AdminTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssaignmentTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="AssignmentTbl" Type="Self.AssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="AssignmentTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssignmentTbl_AssignmentTbl">
+          <End Role="AssignmentTbl" Type="Self.AssignmentTbl" Multiplicity="0..1" />
+          <End Role="StudentAssignmentTbl" Type="Self.StudentAssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignmentTbl">
+              <PropertyRef Name="AssignmentID" />
+            </Principal>
+            <Dependent Role="StudentAssignmentTbl">
+              <PropertyRef Name="AssignmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChapterTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="ChapterTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudyMeterialTbl_ChapterTbl">
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="0..1" />
+          <End Role="StudyMeterialTbl" Type="Self.StudyMeterialTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChapterTbl">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="StudyMeterialTbl">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VideoTbl_ChapterTbl">
+          <End Role="ChapterTbl" Type="Self.ChapterTbl" Multiplicity="0..1" />
+          <End Role="VideoTbl" Type="Self.VideoTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChapterTbl">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="VideoTbl">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassTbl_DepartmentTbl">
+          <End Role="DepartmentTbl" Type="Self.DepartmentTbl" Multiplicity="0..1" />
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTbl">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="ClassTbl">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAssignClassTbl_ClassTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="StaffAssignClassTbl" Type="Self.StaffAssignClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="StaffAssignClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_ClassTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubjectTbl_SubjectTbl">
+          <End Role="ClassTbl" Type="Self.ClassTbl" Multiplicity="0..1" />
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTbl">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="SubjectTbl">
+              <PropertyRef Name="ClassID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CredentialTbl_RoleTbl">
+          <End Role="RoleTbl" Type="Self.RoleTbl" Multiplicity="1" />
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleTbl">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="CredentialTbl">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParentTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="ParentTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="StaffTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SuperAdminTbl_CredentialTbl">
+          <End Role="CredentialTbl" Type="Self.CredentialTbl" Multiplicity="1" />
+          <End Role="SuperAdminTbl" Type="Self.SuperAdminTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CredentialTbl">
+              <PropertyRef Name="CredID" />
+            </Principal>
+            <Dependent Role="SuperAdminTbl">
+              <PropertyRef Name="CredID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffTbl_StaffTbl">
+          <End Role="DepartmentTbl" Type="Self.DepartmentTbl" Multiplicity="0..1" />
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartmentTbl">
+              <PropertyRef Name="DeptID" />
+            </Principal>
+            <Dependent Role="StaffTbl">
+              <PropertyRef Name="DeptID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamQuestionTbl_ExamTbl">
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="0..1" />
+          <End Role="ExamQuestionTbl" Type="Self.ExamQuestionTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Principal>
+            <Dependent Role="ExamQuestionTbl">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamResultTbl_ExamQuestionTbl">
+          <End Role="ExamQuestionTbl" Type="Self.ExamQuestionTbl" Multiplicity="0..1" />
+          <End Role="StudentExamResultTbl" Type="Self.StudentExamResultTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamQuestionTbl">
+              <PropertyRef Name="ExamQuestionID" />
+            </Principal>
+            <Dependent Role="StudentExamResultTbl">
+              <PropertyRef Name="ExamQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamTbl_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="ExamTbl">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamTbl_ExamTbl">
+          <End Role="ExamTbl" Type="Self.ExamTbl" Multiplicity="0..1" />
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Principal>
+            <Dependent Role="StudentExamTbl">
+              <PropertyRef Name="ExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesSendTbl_MesSendTbl">
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="0..1" />
+          <End Role="MesSendTbl" Type="Self.MesSendTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentTbl">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="MesSendTbl">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MesSendTbl_MsgTransTbl">
+          <End Role="MsgTransTbl" Type="Self.MsgTransTbl" Multiplicity="0..1" />
+          <End Role="MesSendTbl" Type="Self.MesSendTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsgTransTbl">
+              <PropertyRef Name="MsgTransID" />
+            </Principal>
+            <Dependent Role="MesSendTbl">
+              <PropertyRef Name="MsgTransID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentTbl_ParentTbl">
+          <End Role="ParentTbl" Type="Self.ParentTbl" Multiplicity="0..1" />
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParentTbl">
+              <PropertyRef Name="ParentID" />
+            </Principal>
+            <Dependent Role="StudentTbl">
+              <PropertyRef Name="ParentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAssignClassTbl_StaffTbl">
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="0..1" />
+          <End Role="StaffAssignClassTbl" Type="Self.StaffAssignClassTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffTbl">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="StaffAssignClassTbl">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StaffAttendance_StaffTbl">
+          <End Role="StaffTbl" Type="Self.StaffTbl" Multiplicity="0..1" />
+          <End Role="StaffAttendanceTbl" Type="Self.StaffAttendanceTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StaffTbl">
+              <PropertyRef Name="StaffID" />
+            </Principal>
+            <Dependent Role="StaffAttendanceTbl">
+              <PropertyRef Name="StaffID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentAssignmentTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentAssignmentTbl" Type="Self.StudentAssignmentTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentAssignmentTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassAttend_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentClassAttend" Type="Self.StudentClassAttend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentClassAttend">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassAttend_SubjectTbl">
+          <End Role="SubjectTbl" Type="Self.SubjectTbl" Multiplicity="0..1" />
+          <End Role="StudentClassAttend" Type="Self.StudentClassAttend" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubjectTbl">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="StudentClassAttend">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamResultTbl_StudentExamTbl">
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="0..1" />
+          <End Role="StudentExamResultTbl" Type="Self.StudentExamResultTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentExamTbl">
+              <PropertyRef Name="StudentExamID" />
+            </Principal>
+            <Dependent Role="StudentExamResultTbl">
+              <PropertyRef Name="StudentExamID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentExamTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentExamTbl" Type="Self.StudentExamTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentExamTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentsAttentanceTbl_StudentTbl">
+          <End Role="StudentTbl" Type="Self.StudentTbl" Multiplicity="0..1" />
+          <End Role="StudentsAttentanceTbl" Type="Self.StudentsAttentanceTbl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTbl">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentsAttentanceTbl">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminTbls" EntityType="Self.AdminTbl" />
+          <EntitySet Name="APITokenTbls" EntityType="Self.APITokenTbl" />
+          <EntitySet Name="AssignmentTbls" EntityType="Self.AssignmentTbl" />
+          <EntitySet Name="ChapterTbls" EntityType="Self.ChapterTbl" />
+          <EntitySet Name="ClassTbls" EntityType="Self.ClassTbl" />
+          <EntitySet Name="CollegeTbls" EntityType="Self.CollegeTbl" />
+          <EntitySet Name="CredentialTbls" EntityType="Self.CredentialTbl" />
+          <EntitySet Name="DepartmentTbls" EntityType="Self.DepartmentTbl" />
+          <EntitySet Name="ExamQuestionTbls" EntityType="Self.ExamQuestionTbl" />
+          <EntitySet Name="ExamTbls" EntityType="Self.ExamTbl" />
+          <EntitySet Name="MessageTbls" EntityType="Self.MessageTbl" />
+          <EntitySet Name="MesSendTbls" EntityType="Self.MesSendTbl" />
+          <EntitySet Name="MsgTransTbls" EntityType="Self.MsgTransTbl" />
+          <EntitySet Name="ParentTbls" EntityType="Self.ParentTbl" />
+          <EntitySet Name="RoleTbls" EntityType="Self.RoleTbl" />
+          <EntitySet Name="StaffAssignClassTbls" EntityType="Self.StaffAssignClassTbl" />
+          <EntitySet Name="StaffAttendanceTbls" EntityType="Self.StaffAttendanceTbl" />
+          <EntitySet Name="StaffTbls" EntityType="Self.StaffTbl" />
+          <EntitySet Name="StudentAssignmentTbls" EntityType="Self.StudentAssignmentTbl" />
+          <EntitySet Name="StudentClassAttends" EntityType="Self.StudentClassAttend" />
+          <EntitySet Name="StudentExamResultTbls" EntityType="Self.StudentExamResultTbl" />
+          <EntitySet Name="StudentExamTbls" EntityType="Self.StudentExamTbl" />
+          <EntitySet Name="StudentsAttentanceTbls" EntityType="Self.StudentsAttentanceTbl" />
+          <EntitySet Name="StudentTbls" EntityType="Self.StudentTbl" />
+          <EntitySet Name="StudyMeterialTbls" EntityType="Self.StudyMeterialTbl" />
+          <EntitySet Name="SubjectTbls" EntityType="Self.SubjectTbl" />
+          <EntitySet Name="SuperAdminTbls" EntityType="Self.SuperAdminTbl" />
+          <EntitySet Name="VideoTbls" EntityType="Self.VideoTbl" />
+          <AssociationSet Name="FK_AdminTbl_CredentialTbl" Association="Self.FK_AdminTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+            <End Role="AdminTbl" EntitySet="AdminTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssaignmentTbl_SubjectTbl" Association="Self.FK_AssaignmentTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbls" />
+            <End Role="AssignmentTbl" EntitySet="AssignmentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssignmentTbl_AssignmentTbl" Association="Self.FK_StudentAssignmentTbl_AssignmentTbl">
+            <End Role="AssignmentTbl" EntitySet="AssignmentTbls" />
+            <End Role="StudentAssignmentTbl" EntitySet="StudentAssignmentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChapterTbl_SubjectTbl" Association="Self.FK_ChapterTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbls" />
+            <End Role="ChapterTbl" EntitySet="ChapterTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudyMeterialTbl_ChapterTbl" Association="Self.FK_StudyMeterialTbl_ChapterTbl">
+            <End Role="ChapterTbl" EntitySet="ChapterTbls" />
+            <End Role="StudyMeterialTbl" EntitySet="StudyMeterialTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VideoTbl_ChapterTbl" Association="Self.FK_VideoTbl_ChapterTbl">
+            <End Role="ChapterTbl" EntitySet="ChapterTbls" />
+            <End Role="VideoTbl" EntitySet="VideoTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassTbl_DepartmentTbl" Association="Self.FK_ClassTbl_DepartmentTbl">
+            <End Role="DepartmentTbl" EntitySet="DepartmentTbls" />
+            <End Role="ClassTbl" EntitySet="ClassTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAssignClassTbl_ClassTbl" Association="Self.FK_StaffAssignClassTbl_ClassTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbls" />
+            <End Role="StaffAssignClassTbl" EntitySet="StaffAssignClassTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_ClassTbl" Association="Self.FK_StudentTbl_ClassTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbls" />
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubjectTbl_SubjectTbl" Association="Self.FK_SubjectTbl_SubjectTbl">
+            <End Role="ClassTbl" EntitySet="ClassTbls" />
+            <End Role="SubjectTbl" EntitySet="SubjectTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CredentialTbl_RoleTbl" Association="Self.FK_CredentialTbl_RoleTbl">
+            <End Role="RoleTbl" EntitySet="RoleTbls" />
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParentTbl_CredentialTbl" Association="Self.FK_ParentTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+            <End Role="ParentTbl" EntitySet="ParentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffTbl_CredentialTbl" Association="Self.FK_StaffTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+            <End Role="StaffTbl" EntitySet="StaffTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_CredentialTbl" Association="Self.FK_StudentTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SuperAdminTbl_CredentialTbl" Association="Self.FK_SuperAdminTbl_CredentialTbl">
+            <End Role="CredentialTbl" EntitySet="CredentialTbls" />
+            <End Role="SuperAdminTbl" EntitySet="SuperAdminTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffTbl_StaffTbl" Association="Self.FK_StaffTbl_StaffTbl">
+            <End Role="DepartmentTbl" EntitySet="DepartmentTbls" />
+            <End Role="StaffTbl" EntitySet="StaffTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamQuestionTbl_ExamTbl" Association="Self.FK_ExamQuestionTbl_ExamTbl">
+            <End Role="ExamTbl" EntitySet="ExamTbls" />
+            <End Role="ExamQuestionTbl" EntitySet="ExamQuestionTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamResultTbl_ExamQuestionTbl" Association="Self.FK_StudentExamResultTbl_ExamQuestionTbl">
+            <End Role="ExamQuestionTbl" EntitySet="ExamQuestionTbls" />
+            <End Role="StudentExamResultTbl" EntitySet="StudentExamResultTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamTbl_SubjectTbl" Association="Self.FK_ExamTbl_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbls" />
+            <End Role="ExamTbl" EntitySet="ExamTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamTbl_ExamTbl" Association="Self.FK_StudentExamTbl_ExamTbl">
+            <End Role="ExamTbl" EntitySet="ExamTbls" />
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesSendTbl_MesSendTbl" Association="Self.FK_MesSendTbl_MesSendTbl">
+            <End Role="ParentTbl" EntitySet="ParentTbls" />
+            <End Role="MesSendTbl" EntitySet="MesSendTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MesSendTbl_MsgTransTbl" Association="Self.FK_MesSendTbl_MsgTransTbl">
+            <End Role="MsgTransTbl" EntitySet="MsgTransTbls" />
+            <End Role="MesSendTbl" EntitySet="MesSendTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentTbl_ParentTbl" Association="Self.FK_StudentTbl_ParentTbl">
+            <End Role="ParentTbl" EntitySet="ParentTbls" />
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAssignClassTbl_StaffTbl" Association="Self.FK_StaffAssignClassTbl_StaffTbl">
+            <End Role="StaffTbl" EntitySet="StaffTbls" />
+            <End Role="StaffAssignClassTbl" EntitySet="StaffAssignClassTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StaffAttendance_StaffTbl" Association="Self.FK_StaffAttendance_StaffTbl">
+            <End Role="StaffTbl" EntitySet="StaffTbls" />
+            <End Role="StaffAttendanceTbl" EntitySet="StaffAttendanceTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentAssignmentTbl_StudentTbl" Association="Self.FK_StudentAssignmentTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+            <End Role="StudentAssignmentTbl" EntitySet="StudentAssignmentTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassAttend_StudentTbl" Association="Self.FK_StudentClassAttend_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+            <End Role="StudentClassAttend" EntitySet="StudentClassAttends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassAttend_SubjectTbl" Association="Self.FK_StudentClassAttend_SubjectTbl">
+            <End Role="SubjectTbl" EntitySet="SubjectTbls" />
+            <End Role="StudentClassAttend" EntitySet="StudentClassAttends" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamResultTbl_StudentExamTbl" Association="Self.FK_StudentExamResultTbl_StudentExamTbl">
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbls" />
+            <End Role="StudentExamResultTbl" EntitySet="StudentExamResultTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentExamTbl_StudentTbl" Association="Self.FK_StudentExamTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+            <End Role="StudentExamTbl" EntitySet="StudentExamTbls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentsAttentanceTbl_StudentTbl" Association="Self.FK_StudentsAttentanceTbl_StudentTbl">
+            <End Role="StudentTbl" EntitySet="StudentTbls" />
+            <End Role="StudentsAttentanceTbl" EntitySet="StudentsAttentanceTbls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LearningHubModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AdminTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.AdminTbl">
+              <MappingFragment StoreEntitySet="AdminTbl">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APITokenTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.APITokenTbl">
+              <MappingFragment StoreEntitySet="APITokenTbl">
+                <ScalarProperty Name="APITokenID" ColumnName="APITokenID" />
+                <ScalarProperty Name="APIName" ColumnName="APIName" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsTest" ColumnName="IsTest" />
+                <ScalarProperty Name="IsChannel" ColumnName="IsChannel" />
+                <ScalarProperty Name="IsUnicord" ColumnName="IsUnicord" />
+                <ScalarProperty Name="IsFlash" ColumnName="IsFlash" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="Route" ColumnName="Route" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignmentTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.AssignmentTbl">
+              <MappingFragment StoreEntitySet="AssignmentTbl">
+                <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DeadLineOn" ColumnName="DeadLineOn" />
+                <ScalarProperty Name="PublishedOn" ColumnName="PublishedOn" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChapterTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.ChapterTbl">
+              <MappingFragment StoreEntitySet="ChapterTbl">
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ChapterName" ColumnName="ChapterName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.ClassTbl">
+              <MappingFragment StoreEntitySet="ClassTbl">
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CollegeTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.CollegeTbl">
+              <MappingFragment StoreEntitySet="CollegeTbl">
+                <ScalarProperty Name="CollegeID" ColumnName="CollegeID" />
+                <ScalarProperty Name="CollegeName" ColumnName="CollegeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CredentialTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.CredentialTbl">
+              <MappingFragment StoreEntitySet="CredentialTbl">
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartmentTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.DepartmentTbl">
+              <MappingFragment StoreEntitySet="DepartmentTbl">
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamQuestionTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.ExamQuestionTbl">
+              <MappingFragment StoreEntitySet="ExamQuestionTbl">
+                <ScalarProperty Name="ExamQuestionID" ColumnName="ExamQuestionID" />
+                <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="OptionA" ColumnName="OptionA" />
+                <ScalarProperty Name="OptionB" ColumnName="OptionB" />
+                <ScalarProperty Name="OptionC" ColumnName="OptionC" />
+                <ScalarProperty Name="OptionD" ColumnName="OptionD" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.ExamTbl">
+              <MappingFragment StoreEntitySet="ExamTbl">
+                <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ExamName" ColumnName="ExamName" />
+                <ScalarProperty Name="ConductDate" ColumnName="ConductDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessageTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.MessageTbl">
+              <MappingFragment StoreEntitySet="MessageTbl">
+                <ScalarProperty Name="MsgID" ColumnName="MsgID" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+                <ScalarProperty Name="FirstPara" ColumnName="FirstPara" />
+                <ScalarProperty Name="SecondPara" ColumnName="SecondPara" />
+                <ScalarProperty Name="ThirdPara" ColumnName="ThirdPara" />
+                <ScalarProperty Name="FourthPara" ColumnName="FourthPara" />
+                <ScalarProperty Name="FifthPara" ColumnName="FifthPara" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MesSendTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.MesSendTbl">
+              <MappingFragment StoreEntitySet="MesSendTbl">
+                <ScalarProperty Name="MsgSendID" ColumnName="MsgSendID" />
+                <ScalarProperty Name="MsgTransID" ColumnName="MsgTransID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="MessageText" ColumnName="MessageText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MsgTransTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.MsgTransTbl">
+              <MappingFragment StoreEntitySet="MsgTransTbl">
+                <ScalarProperty Name="MsgTransID" ColumnName="MsgTransID" />
+                <ScalarProperty Name="ErrCode" ColumnName="ErrCode" />
+                <ScalarProperty Name="ErrMsg" ColumnName="ErrMsg" />
+                <ScalarProperty Name="JobId" ColumnName="JobId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParentTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.ParentTbl">
+              <MappingFragment StoreEntitySet="ParentTbl">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.RoleTbl">
+              <MappingFragment StoreEntitySet="RoleTbl">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffAssignClassTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StaffAssignClassTbl">
+              <MappingFragment StoreEntitySet="StaffAssignClassTbl">
+                <ScalarProperty Name="AllotedClassID" ColumnName="AllotedClassID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffAttendanceTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StaffAttendanceTbl">
+              <MappingFragment StoreEntitySet="StaffAttendanceTbl">
+                <ScalarProperty Name="StaffAttendanceID" ColumnName="StaffAttendanceID" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="PresentDate" ColumnName="PresentDate" />
+                <ScalarProperty Name="IsLogin" ColumnName="IsLogin" />
+                <ScalarProperty Name="IsLogout" ColumnName="IsLogout" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StaffTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StaffTbl">
+              <MappingFragment StoreEntitySet="StaffTbl">
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="StaffName" ColumnName="StaffName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SkypeUserName" ColumnName="SkypeUserName" />
+                <ScalarProperty Name="IsHead" ColumnName="IsHead" />
+                <ScalarProperty Name="DeptID" ColumnName="DeptID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentAssignmentTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentAssignmentTbl">
+              <MappingFragment StoreEntitySet="StudentAssignmentTbl">
+                <ScalarProperty Name="StudentAssignmentID" ColumnName="StudentAssignmentID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
+                <ScalarProperty Name="MeterailPath" ColumnName="MeterailPath" />
+                <ScalarProperty Name="AssignmentMark" ColumnName="AssignmentMark" />
+                <ScalarProperty Name="SubmittedDate" ColumnName="SubmittedDate" />
+                <ScalarProperty Name="IsStaffApprove" ColumnName="IsStaffApprove" />
+                <ScalarProperty Name="IsHODApprove" ColumnName="IsHODApprove" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentClassAttends">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentClassAttend">
+              <MappingFragment StoreEntitySet="StudentClassAttend">
+                <ScalarProperty Name="StudentClassAttID" ColumnName="StudentClassAttID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="PresentDate" ColumnName="PresentDate" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentExamResultTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentExamResultTbl">
+              <MappingFragment StoreEntitySet="StudentExamResultTbl">
+                <ScalarProperty Name="StudentExamResultID" ColumnName="StudentExamResultID" />
+                <ScalarProperty Name="StudentExamID" ColumnName="StudentExamID" />
+                <ScalarProperty Name="ExamQuestionID" ColumnName="ExamQuestionID" />
+                <ScalarProperty Name="SelectedAnswer" ColumnName="SelectedAnswer" />
+                <ScalarProperty Name="IsTrue" ColumnName="IsTrue" />
+                <ScalarProperty Name="AttendTime" ColumnName="AttendTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentExamTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentExamTbl">
+              <MappingFragment StoreEntitySet="StudentExamTbl">
+                <ScalarProperty Name="StudentExamID" ColumnName="StudentExamID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ExamID" ColumnName="ExamID" />
+                <ScalarProperty Name="TotalAttendQuestion" ColumnName="TotalAttendQuestion" />
+                <ScalarProperty Name="TotalCurrectAnwer" ColumnName="TotalCurrectAnwer" />
+                <ScalarProperty Name="TotalWrongAnswer" ColumnName="TotalWrongAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentsAttentanceTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentsAttentanceTbl">
+              <MappingFragment StoreEntitySet="StudentsAttentanceTbl">
+                <ScalarProperty Name="StudentAttentanceID" ColumnName="StudentAttentanceID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="PresentDate" ColumnName="PresentDate" />
+                <ScalarProperty Name="IsLogin" ColumnName="IsLogin" />
+                <ScalarProperty Name="IsLogout" ColumnName="IsLogout" />
+                <ScalarProperty Name="LoginMinites" ColumnName="LoginMinites" />
+                <ScalarProperty Name="IsStaffApprove" ColumnName="IsStaffApprove" />
+                <ScalarProperty Name="IsHODApprove" ColumnName="IsHODApprove" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudentTbl">
+              <MappingFragment StoreEntitySet="StudentTbl">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyMeterialTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.StudyMeterialTbl">
+              <MappingFragment StoreEntitySet="StudyMeterialTbl">
+                <ScalarProperty Name="StudyMeterialID" ColumnName="StudyMeterialID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="MeterialPath" ColumnName="MeterialPath" />
+                <ScalarProperty Name="StudyMeterialTitle" ColumnName="StudyMeterialTitle" />
+                <ScalarProperty Name="PublishedOn" ColumnName="PublishedOn" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.SubjectTbl">
+              <MappingFragment StoreEntitySet="SubjectTbl">
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SuperAdminTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.SuperAdminTbl">
+              <MappingFragment StoreEntitySet="SuperAdminTbl">
+                <ScalarProperty Name="SuperAdminID" ColumnName="SuperAdminID" />
+                <ScalarProperty Name="CredID" ColumnName="CredID" />
+                <ScalarProperty Name="SuperAdminName" ColumnName="SuperAdminName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VideoTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.VideoTbl">
+              <MappingFragment StoreEntitySet="VideoTbl">
+                <ScalarProperty Name="VideoID" ColumnName="VideoID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+                <ScalarProperty Name="VideoTitle" ColumnName="VideoTitle" />
+                <ScalarProperty Name="PublishedOn" ColumnName="PublishedOn" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,359 @@
+﻿<!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-laugh-wink"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">CHMM College</div>
+        </a>
+        <hr class="sidebar-divider my-0">
+      
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "RoleTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Role Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "APITokenTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>API Token Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "AdminTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Admin Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("PasswordReset", "SuperAdmin",new { UserRole = "4" })">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Staff Password Reset</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("PasswordReset", "SuperAdmin",new { UserRole = "5" })">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Student Password Reset</span>
+                </a>
+            </li>
+            @*<li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "CredentialDetails")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Credential Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "RoleDetails")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Role Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "SuperAdminDetails")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>SuperAdmin Manage</span>
+                </a>
+            </li>*@
+      
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StaffTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Staff Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StaffAssignClassTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Staff Assign</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "DepartmentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Department Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "ClassTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Class Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "SubjectTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Subject Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "ChapterTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Chapter Manage</span>
+                </a>
+            </li>
+            @*<li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "MessageTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Message Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ClassWiseMessage", "Message")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Class Wise Message</span>
+                </a>
+            </li>*@
+            @*<li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("StudentsUpload", "StudentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Students Upload</span>
+                </a>
+            </li>*@
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "VideoTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Video Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ClassWiseTemplate", "StudentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>CSV Tempalte Download</span>
+                </a>
+            </li>
+     
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "ParentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Parents Manage</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StudentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Student Manage</span>
+                </a>
+            </li>
+            @*<li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ClassWiseMessage", "Message")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Class Wise Message</span>
+                </a>
+            </li>*@
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("StudentsUpload", "StudentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Students Upload</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ClassWiseTemplate", "StudentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>CSV Tempalte Download</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StudyMeterialTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Study Meterial Upload</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StudentsAttentanceTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Students Attendance</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "AssignmentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Assignment Assign</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "ExamTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Add Exam</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "ExamQuestionTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Add Exam Question</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ExamQuestionUpload", "ExamQuestionTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Upload Exam Question</span>
+                </a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "VideoManage")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Tutorial Video</span>
+                </a>
+            </li>
+     
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Videos", "Student")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Video</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("Index", "StudentAssignmentTbls")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Assignment Upload</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("StudyMeterials", "Student")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Study Meterial</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("ExamDashboard", "Student")">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exam</span>
+                </a>
+            </li>
+
+        <!-- Divider -->
+        @*<li class="nav-item active">
+            <a class="nav-link" href="~/Categories/Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Categories</span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="~/Items/Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Items</span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="~/Restaurants/Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Restaurants</span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="~/Settings/Index">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="~/Users/Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Users</span>
+            </a>
+        </li>*@
+        @*<li class="nav-item active">
+            <a class="nav-link" href="~/UsersRoles/Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Users Role</span>
+            </a>
+        </li>*@
+
+        <!-- Nav Item - Dashboard -->
+        <!-- Divider -->
+        @*<hr class="sidebar-divider">*@
+
+        <!-- Heading -->
+        @*<div class="sidebar-heading">
+            Interface
+        </div>*@
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        @*<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Components</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Components:</h6>
+                    <a class="collapse-item" href="buttons.html">Buttons</a>
+                    <a class="collapse-item" href="cards.html">Cards</a>
+                </div>
+            </div>
+        </li>*@
+
+        <!-- Nav Item - Utilities Collapse Menu -->
+        @*<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Utilities</span>
+            </a>
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Custom Utilities:</h6>
+                    <a class="collapse-item" href="utilities-color.html">Colors</a>
+                    <a class="collapse-item" href="utilities-border.html">Borders</a>
+                    <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                    <a class="collapse-item" href="utilities-other.html">Other</a>
+                </div>
+            </div>
+        </li>*@
+
+        <!-- Divider -->
+        @*<hr class="sidebar-divider">*@
+
+        <!-- Heading -->
+        @*<div class="sidebar-heading">
+            Addons
+        </div>*@
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        @*<li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>Pages</span>
+            </a>
+            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Login Screens:</h6>
+                    <a class="collapse-item" href="login.html">Login</a>
+                    <a class="collapse-item" href="register.html">Register</a>
+                    <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>
+                </div>
+            </div>
+        </li>*@
+
+        <!-- Nav Item - Charts -->
+        @*<li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span>
+            </a>
+        </li>*@
+
+        <!-- Nav Item - Tables -->
+        @*<li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Tables</span>
+            </a>
+        </li>*@
+
+        <!-- Divider -->
+        @*<hr class="sidebar-divider d-none d-md-block">*@
+
+        <!-- Sidebar Toggler (Sidebar) -->
+        @*<div class="text-center d-none d-md-inline">
+            <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        </div>*@
+    </ul>
+<!-- End of Sidebar -->

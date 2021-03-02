@@ -1,0 +1,20 @@
+﻿@model LearningHub.Models.StudentExamTbl
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+
+            @using (Html.BeginForm("ExamQuestion", "Exams", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.StudentExamID)
+                <input type="submit" value="Attend" />
+            }
+        </th>
+        <th></th>
+    </tr>
+</table>

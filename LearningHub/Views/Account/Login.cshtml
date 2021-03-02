@@ -1,0 +1,118 @@
+﻿@model LearningHub.Models.CredentialTbl
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hackbal Learning</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="57x57" href="~/Images/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="~/Images/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="~/Images/favicon/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/Images/favicon/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="~/Images/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/Images/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="~/Images/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/Images/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/Images/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="~/Images/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="~/Images/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="~/Images/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="~/Content/LoginPage/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/LoginPage/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/LoginPage/main.css" rel="stylesheet" />
+    <style>
+        .errmsg {
+            font-size: 15px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 ">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/Images/LoginPage/img-01.png" alt="Logo" />
+                </div>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "login100-form validate-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <span class="login100-form-title">
+                        Hackbal Learning
+                    </span>
+                    @*<span class="login100-form-title errmsg">@Html.ValidationMessage("Invalid")</span>*@
+                    <div class="wrap-input100 validate-input" data-validate="Valid Email is Required: help@hackbal.com">
+                        <input class="input100" type="text" name="Username" placeholder="Email">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input" data-validate="Password is Required">
+                        <input class="input100" type="password" name="Password" placeholder="Password">
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        (function () {
+            var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.id = 'lsInitScript';
+            s.src = 'https://livesupporti.com/Scripts/clientAsync.js?acc=d9163633-9cea-43e6-889e-7b49b753b484&skin=Air';
+            var scr = document.getElementsByTagName('script')[0]; scr.parentNode.appendChild(s, scr);
+        })();
+    </script>
+    <script src="~/Scripts/LoginPage/jquery-3.2.1.min.js"></script>
+    <script src="~/Scripts/LoginPage/tilt.jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <script src="~/Scripts/LoginPage/main.js"></script>
+
+    @*Error Model*@
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="alert alert-danger" role="alert">
+                <div id="errormsg"></div>
+            </div>
+        </div>
+    </div>
+    @*Error Model*@
+
+    <script>
+	setTimeout(function(){
+   window.location.reload(1);
+    }, 1000 * 60 * 10);
+        @if(ViewBag.Error != null) {
+        <text>
+        $('#myModal').modal('show');
+        $('#errormsg').text("@ViewBag.Error");
+        </text>
+        }
+        setTimeout(function () { $('#myModal').modal('hide'); }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+﻿
+
+.pagination > .active > a {
+    background-color: #605ca8;
+}
+
+.atagwhite {
+    color: #ffffff;
+}
+
+.atagwhite:hover {
+    color: black;
+}

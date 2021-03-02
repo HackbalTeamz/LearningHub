@@ -1,0 +1,66 @@
+﻿@model LearningHub.Models.MessageTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MessageTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstPara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstPara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondPara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondPara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThirdPara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThirdPara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FourthPara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FourthPara)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FifthPara)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FifthPara)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

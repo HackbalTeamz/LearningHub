@@ -1,0 +1,58 @@
+﻿@model LearningHub.Models.StudentsAttentanceTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudentsAttentanceTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PresentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PresentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLogout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLogout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginMinites)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginMinites)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTbl.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTbl.StudentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentAttentanceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

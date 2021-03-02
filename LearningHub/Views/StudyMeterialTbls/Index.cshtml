@@ -1,0 +1,108 @@
+﻿@model IEnumerable<LearningHub.Models.StudyMeterialTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Study Material
+            <small>All Study Material</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Study Material</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"> @Html.Label("Google Drive Link")</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.Label("Title")</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.Label("Chapter List")</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.Label("Upload On")</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.Label("Published On")</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">View File</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.MeterialPath)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.StudyMeterialTitle)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ChapterTbl.ChapterName) <span>-</span> @Html.DisplayFor(modelItem => item.ChapterTbl.SubjectTbl.SubjectName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UpdatedOn)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PublishedOn)
+                                                </td>
+                                                <td>
+                                                    <a target="_blank" href="https://drive.google.com/file/d/@item.MeterialPath/preview">View File</a>
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.StudyMeterialID }) |
+                                                    @Html.ActionLink("Details", "Details", new { id = item.StudyMeterialID }) |
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.StudyMeterialID })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">@Html.Label("Google Drive Link")</th>
+                                            <th rowspan="1" colspan="1">@Html.Label("Title")</th>
+                                            <th rowspan="1" colspan="1">@Html.Label("Chapter List")</th>
+                                            <th rowspan="1" colspan="1">@Html.Label("Upload On")</th>
+                                            <th rowspan="1" colspan="1">@Html.Label("Published On")</th>
+                                            <th rowspan="1" colspan="1">View File</th>
+                                            <th rowspan="1" colspan="1">Action</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
+}
+

@@ -1,0 +1,90 @@
+﻿@model  LearningHub.ViewModel.StudentDashboardVM
+@{
+    ViewBag.Title = "Assignment List";
+    Layout = "~/Views/Shared/Student/_StudentBase.cshtml";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Assignment
+            <small>All Assignment List</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Assignment</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- =========================================================== -->
+        <div class="row">
+            <div class="col-xs-12">
+                <!-- /.box -->
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div id="assignmenttbl_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table id="assignmenttbl" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="assignmenttbl_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="assignmenttbl" rowspan="1" colspan="1">Assignment Path</th>
+                                                <th class="sorting" tabindex="0" aria-controls="assignmenttbl" rowspan="1" colspan="1">Submitted Date</th>
+                                                <th class="sorting" tabindex="0" aria-controls="assignmenttbl" rowspan="1" colspan="1">Assignment Top</th>
+                                                <th class="sorting" tabindex="0" aria-controls="assignmenttbl" rowspan="1" colspan="1">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.studentAssignmentTbls)
+                                            {
+                                                <tr role="row">
+                                                    <td class="sorting_1">@Html.DisplayFor(modelItem => item.MeterailPath)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.SubmittedDate)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.AssignmentTbl.Topic)</td>
+                                                    <td>@Html.ActionLink("Delete", "Delete", new { id = item.StudentAssignmentID })</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th rowspan="1" colspan="1">Assignment Path</th>
+                                                <th rowspan="1" colspan="1">Submitted Date</th>
+                                                <th rowspan="1" colspan="1">Assignment Top</th>
+                                                <th rowspan="1" colspan="1">Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#assignmenttbl').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
+
+}

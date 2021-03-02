@@ -1,0 +1,64 @@
+﻿@model LearningHub.Models.StudentsAttentanceTbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>StudentsAttentanceTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PresentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PresentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLogin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLogin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsLogout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsLogout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginMinites)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginMinites)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTbl.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTbl.StudentName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

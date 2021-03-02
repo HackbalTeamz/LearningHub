@@ -1,0 +1,47 @@
+﻿@model LearningHub.Models.ClassTbl
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="card shadow mb-4">
+    <!-- Card Header - Dropdown -->
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">@Html.ActionLink("Class List", "Index")  ||  @Html.ActionLink("Create New Class", "Create")</h6>
+    </div>
+    <!-- Card Body -->
+    <div class="card-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>ClassTbl</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.DeptID, "DeptID", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
+                        @Html.DropDownList("DeptID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DeptID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    @Html.LabelFor(model => model.ClassName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-5">
+                        @Html.EditorFor(model => model.ClassName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ClassName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="offset-md-2 col-md-2">
+                        <input type="submit" value="Create" class="btn btn-primary btn-user btn-block" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

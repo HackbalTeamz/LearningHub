@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LearningHub.Models.SubjectTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChapterTbls.First().ChapterName)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubjectName)
+        </td>
+        @{int i = 1;}
+        @foreach (var item2 in item.ChapterTbls)
+        {
+
+            if (i != 1)
+            {
+                @:<tr>
+                <td></td>
+            }
+            <td>
+                <a href="~/VideoManage/Index/@item2.ChapterID">@Html.DisplayFor(modelItem => item2.ChapterName)</a>
+            </td>
+            if(i != 1)
+            {
+                @:</tr>
+            }
+            i++;
+        }
+    </tr>
+        }
+     </table>

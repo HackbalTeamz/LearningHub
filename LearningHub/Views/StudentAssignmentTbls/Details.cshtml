@@ -1,0 +1,50 @@
+﻿@model LearningHub.Models.StudentAssignmentTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudentAssignmentTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MeterailPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeterailPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubmittedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubmittedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssignmentTbl.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssignmentTbl.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentTbl.StudentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentTbl.StudentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentAssignmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

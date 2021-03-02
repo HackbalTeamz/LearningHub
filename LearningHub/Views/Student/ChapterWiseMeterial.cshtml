@@ -1,0 +1,70 @@
+﻿@model  LearningHub.ViewModel.StudentDashboardVM
+@{
+    ViewBag.Title = "ChapterWiseMeterial";
+    Layout = "~/Views/Shared/Student/_StudentBase.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Study Materials
+            <small>All Study Materials</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Study Materials</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-body">
+                        <div id="assignmenttbl_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="timeline">
+
+                                        <!-- timeline item -->
+
+
+                                        @foreach (var item in Model.studyMeterialTbls)
+                                        {
+                                            <li>
+                                                <i class="fa fa-comments bg-yellow"></i>
+
+                                                <div class="timeline-item">
+                                                    <span class="time"><i class="fa fa-clock-o"></i> Live </span>
+
+                                                    <h3 class="timeline-header"><a href="#">@item.StudyMeterialTitle</a> Study Materials</h3>
+
+                                                    <div class="timeline-body">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <br />
+                                                            <br />
+                                                            <h2>@item.StudyMeterialTitle</h2>
+                                                            <br />
+                                                            <br />
+                                                            <iframe src="https://drive.google.com/file/d/@item.MeterialPath/preview" width="1000" height="1000"></iframe>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-footer">
+                                                        @*<a href="#" class="btn btn-xs bg-maroon">See comments</a>*@
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+
+                                        <!-- END timeline item -->
+                                        <li>
+                                            <i class="fa fa-clock-o bg-gray"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

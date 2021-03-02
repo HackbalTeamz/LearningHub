@@ -1,0 +1,58 @@
+﻿@model LearningHub.Models.ParentTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ParentTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnteredOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnteredOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CredentialTbl.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CredentialTbl.UserName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

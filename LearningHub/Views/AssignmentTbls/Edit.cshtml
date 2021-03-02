@@ -1,0 +1,120 @@
+﻿@model LearningHub.Models.AssignmentTbl
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
+}
+<link href="~/Scripts/AdminPanel/components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Assignment
+            <small>Assignment Upload</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Assignment</a></li>
+            <li class="active">Assignment Upload</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Assignment Upload</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+
+
+                    @using (Html.BeginForm("Edit", "AssignmentTbls", FormMethod.Post, new { role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @*<div class="form-horizontal">
+                            <h4>AssignmentTbl</h4>
+                            <hr />*@
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.AssignmentID)
+                        <div class="box-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SubjectID, "SubjectID")
+
+                                @Html.DropDownList("SubjectID", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SubjectID, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Topic)
+
+                                @Html.EditorFor(model => model.Topic, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Topic, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description)
+
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DeadLineOn)
+
+                                @Html.EditorFor(model => model.DeadLineOn, @"{0:yyyy\/MM\/dd}", new { htmlAttributes = new { @class = "form-control pull-right", id = "datepicker1" } })
+                                @Html.ValidationMessageFor(model => model.DeadLineOn, "", new { @class = "text-danger" })
+
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PublishedOn)
+
+                                @Html.EditorFor(model => model.PublishedOn, @"{0:yyyy\/MM\/dd}", new { htmlAttributes = new { @class = "form-control pull-right", id = "datepicker2" } })
+                                @Html.ValidationMessageFor(model => model.PublishedOn, "", new { @class = "text-danger" })
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="box-footer">
+                            <button type="submit" value="Create" class="btn bg-purple">Submit</button>
+
+                        </div>
+                        @*</div>*@
+                    }
+
+                    @*<div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>*@
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts
+{
+
+    <script src="~/Scripts/AdminPanel/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script>
+        //Date picker
+        $('#datepicker1').datepicker({
+            format: "mm/dd/yyyy",
+            autoclose: true
+        });
+        $('#datepicker2').datepicker({
+            format: "mm/dd/yyyy",
+            autoclose: true
+        })
+    </script>
+}

@@ -1,0 +1,113 @@
+﻿@model IEnumerable<LearningHub.Models.StudentTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Student
+            <small>Enrolled Students</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Student</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1"> @Html.DisplayNameFor(model => model.StudentName)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Mobile)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ClassTbl.ClassName)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.CredentialTbl.UserName)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.CredentialTbl.Password)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ParentTbl.ParentName)</th>
+                                            <th rowspan="1" colspan="1">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr role="row">
+                                                <td class="sorting_1">
+                                                    @Html.DisplayFor(modelItem => item.StudentName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Mobile)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ClassTbl.ClassName) - @Html.DisplayFor(modelItem => item.ClassTbl.DepartmentTbl.DeptName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CredentialTbl.UserName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.CredentialTbl.Password)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.ParentTbl.ParentName) - @Html.DisplayFor(modelItem => item.ParentTbl.Mobile)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                                                    @*@Html.ActionLink("Details", "Details", new { id = item.StudentID }) |*@
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.StudentName)</th>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Mobile)</th>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ClassTbl.ClassName)</th>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.CredentialTbl.UserName)</th>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.CredentialTbl.Password)</th>
+                                            <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ParentTbl.ParentName)</th>
+                                            <th rowspan="1" colspan="1">Delete</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+            </div>
+    </section>
+</div>
+@section scripts
+{
+    @*<script src="~/Content/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="~/Content/Admin/js/demo/datatables-demo.js"></script>*@
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
+}

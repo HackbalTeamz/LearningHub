@@ -1,0 +1,82 @@
+﻿@model IEnumerable<LearningHub.Models.VideoTbl>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section Styles {
+    <!-- Custom styles for this page -->
+    <link href="~/Content/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+
+<div class="card-body">
+    <p>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.ActionLink("Create Video", "Create", new { area = "" }, new { @class = "btn btn-primary btn-user btn-block" })
+            </div>
+
+        </div>
+    </p>
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VideoLink)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VideoTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublishedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DisplayOrder)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChapterTbl.ChapterName)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoLink)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishedOn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ChapterTbl.ChapterName) <span> - </span> @Html.DisplayFor(modelItem => item.ChapterTbl.SubjectTbl.SubjectName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.VideoID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.VideoID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.VideoID })
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts
+{
+    <!-- Page level plugins -->
+    <script src="~/Content/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/Content/Admin/js/demo/datatables-demo.js"></script>
+}

@@ -1,0 +1,42 @@
+﻿@model LearningHub.Models.ExamTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ExamTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExamName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExamName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConductDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConductDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectTbl.SubjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectTbl.SubjectName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExamID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

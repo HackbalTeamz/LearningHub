@@ -1,0 +1,42 @@
+﻿@model LearningHub.Models.StudyMeterialTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudyMeterialTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MeterialPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MeterialPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudyMeterialTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudyMeterialTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChapterTbl.ChapterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChapterTbl.ChapterName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudyMeterialID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aefdfb0de4cb461ebe3848386e9854f9" Name="Diagram1">
+        <EntityTypeShape EntityType="LearningHubModel.AdminTbl" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.APITokenTbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.AssignmentTbl" Width="1.5" PointX="7.5" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.ChapterTbl" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.ClassTbl" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.CollegeTbl" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.CredentialTbl" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.DepartmentTbl" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.ExamQuestionTbl" Width="1.5" PointX="9.75" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.ExamTbl" Width="1.5" PointX="7.5" PointY="31.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.MessageTbl" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.MesSendTbl" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.MsgTransTbl" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.ParentTbl" Width="1.5" PointX="6" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.RoleTbl" Width="1.5" PointX="1.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StaffAssignClassTbl" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StaffAttendanceTbl" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StaffTbl" Width="1.5" PointX="3" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentAssignmentTbl" Width="1.5" PointX="10.5" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentClassAttend" Width="1.5" PointX="13.5" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentExamResultTbl" Width="1.5" PointX="14.75" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentExamTbl" Width="1.5" PointX="12.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentsAttentanceTbl" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudentTbl" Width="1.5" PointX="8.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.StudyMeterialTbl" Width="1.5" PointX="9.75" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.SubjectTbl" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.SuperAdminTbl" Width="1.5" PointX="3" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LearningHubModel.VideoTbl" Width="1.5" PointX="9.75" PointY="27.625" IsExpanded="true" />
+        <AssociationConnector Association="LearningHubModel.FK_AdminTbl_CredentialTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_AssaignmentTbl_SubjectTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentAssignmentTbl_AssignmentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_ChapterTbl_SubjectTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudyMeterialTbl_ChapterTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_VideoTbl_ChapterTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_ClassTbl_DepartmentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StaffAssignClassTbl_ClassTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentTbl_ClassTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_SubjectTbl_SubjectTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_CredentialTbl_RoleTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_ParentTbl_CredentialTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StaffTbl_CredentialTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentTbl_CredentialTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_SuperAdminTbl_CredentialTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StaffTbl_StaffTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_ExamQuestionTbl_ExamTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentExamResultTbl_ExamQuestionTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_ExamTbl_SubjectTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentExamTbl_ExamTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_MesSendTbl_MesSendTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_MesSendTbl_MsgTransTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentTbl_ParentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StaffAssignClassTbl_StaffTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StaffAttendance_StaffTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentAssignmentTbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentClassAttend_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentClassAttend_SubjectTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentExamResultTbl_StudentExamTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentExamTbl_StudentTbl" ManuallyRouted="false" />
+        <AssociationConnector Association="LearningHubModel.FK_StudentsAttentanceTbl_StudentTbl" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

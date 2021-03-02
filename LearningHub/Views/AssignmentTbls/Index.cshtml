@@ -1,0 +1,100 @@
+﻿@model IEnumerable<LearningHub.Models.AssignmentTbl>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Assignment
+            <small>Assignment list</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Assignment</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="card-body">
+
+                            <table class="table table-bordered table-striped" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Topic)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Description)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.DeadLineOn)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.PublishedOn)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.SubjectTbl.SubjectName)</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Topic)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DeadLineOn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PublishedOn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SubjectTbl.SubjectName) <span> - </span> @Html.DisplayFor(modelItem => item.SubjectTbl.ClassTbl.ClassName) <span> - </span> @Html.DisplayFor(modelItem => item.SubjectTbl.ClassTbl.DepartmentTbl.DeptName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.AssignmentID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.AssignmentID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.AssignmentID })
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Topic)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Description)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.DeadLineOn)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.PublishedOn)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.SubjectTbl.SubjectName)</th>
+                                        <th rowspan="1" colspan="1">Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
+}

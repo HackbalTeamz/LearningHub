@@ -1,0 +1,42 @@
+﻿@model LearningHub.Models.MesSendTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MesSendTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentTbl.ParentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentTbl.ParentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MsgTransTbl.ErrCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MsgTransTbl.ErrCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgSendID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

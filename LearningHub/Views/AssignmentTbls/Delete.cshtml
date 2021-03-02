@@ -1,0 +1,64 @@
+﻿@model LearningHub.Models.AssignmentTbl
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AssignmentTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeadLineOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeadLineOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublishedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubjectTbl.SubjectName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubjectTbl.SubjectName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

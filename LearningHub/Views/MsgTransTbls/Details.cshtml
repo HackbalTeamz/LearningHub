@@ -1,0 +1,42 @@
+﻿@model LearningHub.Models.MsgTransTbl
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MsgTransTbl</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ErrCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErrCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ErrMsg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErrMsg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MsgTransID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
