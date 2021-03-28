@@ -68,7 +68,7 @@ namespace LearningHub.Controllers
                                     SmtpClient smtp = new SmtpClient();
                                     message.From = new MailAddress("hackbalbusiness@gmail.com");
                                     message.To.Add(new MailAddress(item.UserName));
-                                    message.Subject = "Hackbal Learning Credential";
+                                    message.Subject = "Learning Hub Credential";
                                     message.IsBodyHtml = true; //to make message body as html  
                                     message.Body = getHtml(context.StudentTbls.Where(x => x.CredID == item.CredID).FirstOrDefault());
                                     smtp.Port = 587;
