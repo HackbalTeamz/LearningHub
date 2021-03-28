@@ -12,66 +12,97 @@
         </div>
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="@Html.IsSelected(controller: "ParentTbls")">
-                <a href="@Url.Action("Dashboard", "Staff")">
+            <li class="@Html.IsSelected(controller: "Admin")">
+                <a href="@Url.Action("Dashboard", "Admin")">
                     <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                 </a>
             </li>
-            <li class="@Html.IsSelected(controller: "ParentTbls") treeview">
-                <a href="@Url.Action("Index", "ParentTbls")">
-                    <i class="fa fa-users"></i> <span>Parents</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li class="@Html.IsSelected(controller: "DepartmentTbls")">
+                <a href="@Url.Action("Index", "DepartmentTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Departments</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StaffTbls")"><i class="fa fa-users"></i> StaffTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "StaffAssignClassTbls")"><i class="fa fa-user-plus"></i>StaffAssignClassTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "DepartmentTbls")"><i class="fa fa-users"></i> DepartmentTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "ClassTbls")"><i class="fa fa-user-plus"></i> ClassTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "SubjectTbls")"><i class="fa fa-users"></i> SubjectTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "ChapterTbls")"><i class="fa fa-user-plus"></i> ChapterTbls</a></li>
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "SubjectTbls")"><i class="fa fa-users"></i> VideoTbls</a></li>
-                </ul>
             </li>
-            @*<li class="@Html.IsSelected(controller: "StudentTbls") treeview">
-                <a href="@Url.Action("Index", "StudentTbls")">
-                    <i class="fa fa-users"></i> <span>Students</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li class="@Html.IsSelected(controller: "ClassTbls")">
+                <a href="@Url.Action("Index", "ClassTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Class</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StudentTbls")"><i class="fa fa-users"></i> Students</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "StudentTbls")"><i class="fa fa-user-plus"></i>New Students</a></li>
-                    <li class="@Html.IsSelected(action: "ClassWiseTemplate")"><a href="@Url.Action("ClassWiseTemplate", "StudentTbls")"><i class="fa fa-download"></i> Class Wise Template</a></li>
-                </ul>
             </li>
-            <li class="@Html.IsSelected(controller: "StudyMeterialTbls") treeview">
-                <a href="@Url.Action("Index", "StudyMeterialTbls")">
-                    <i class="fa fa-book"></i> <span>Study Meterials</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+            <li class="@Html.IsSelected(controller: "SubjectTbls")">
+                <a href="@Url.Action("Index", "SubjectTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Subject</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StudyMeterialTbls")"><i class="fa fa-book"></i> Study Meterials</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "StudyMeterialTbls")"><i class="fa fa fa-upload"></i>Upload Study Meterials</a></li>
-                </ul>
+            </li>
+            <li class="@Html.IsSelected(controller: "ChapterTbls")">
+                <a href="@Url.Action("Index", "ChapterTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Chapter</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "StaffTbls")">
+                <a href="@Url.Action("Index", "StaffTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Staff</span>
+                </a>
+            </li>
+            <li class="@Html.IsSelected(controller: "StaffAssignClassTbls")">
+                <a href="@Url.Action("Index", "StaffAssignClassTbls")">
+                    <i class="fa fa-dashboard"></i> <span>Staff Assign</span>
+                </a>
             </li>
 
-            <li class="@Html.IsSelected(controller: "AssignmentTbls") treeview">
-                <a href="@Url.Action("Index", "AssignmentTbls")">
-                    <i class="fa fa-tasks"></i> <span>Assignment</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "AssignmentTbls")"><i class="fa fa-tasks"></i>Assignment</a></li>
-                    <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "AssignmentTbls")"><i class="fa fa fa-upload"></i>New Assignment</a></li>
-                </ul>
-            </li>*@
+            @*<li class="@Html.IsSelected(controller: "StaffTbls") treeview">
+            <a href="@Url.Action("Index", "StaffTbls")">
+                <i class="fa fa-users"></i> <span>Parents</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StaffTbls")"><i class="fa fa-users"></i> StaffTbls</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "StaffAssignClassTbls")"><i class="fa fa-user-plus"></i>StaffAssignClassTbls</a></li>
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "DepartmentTbls")"><i class="fa fa-users"></i> DepartmentTbls</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "ClassTbls")"><i class="fa fa-user-plus"></i> ClassTbls</a></li>
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "SubjectTbls")"><i class="fa fa-users"></i> SubjectTbls</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Index", "ChapterTbls")"><i class="fa fa-user-plus"></i> ChapterTbls</a></li>
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "SubjectTbls")"><i class="fa fa-users"></i> VideoTbls</a></li>
+            </ul>
+        </li>*@
+            @*<li class="@Html.IsSelected(controller: "StudentTbls") treeview">
+            <a href="@Url.Action("Index", "StudentTbls")">
+                <i class="fa fa-users"></i> <span>Students</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StudentTbls")"><i class="fa fa-users"></i> Students</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "StudentTbls")"><i class="fa fa-user-plus"></i>New Students</a></li>
+                <li class="@Html.IsSelected(action: "ClassWiseTemplate")"><a href="@Url.Action("ClassWiseTemplate", "StudentTbls")"><i class="fa fa-download"></i> Class Wise Template</a></li>
+            </ul>
+        </li>
+        <li class="@Html.IsSelected(controller: "StudyMeterialTbls") treeview">
+            <a href="@Url.Action("Index", "StudyMeterialTbls")">
+                <i class="fa fa-book"></i> <span>Study Meterials</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "StudyMeterialTbls")"><i class="fa fa-book"></i> Study Meterials</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "StudyMeterialTbls")"><i class="fa fa fa-upload"></i>Upload Study Meterials</a></li>
+            </ul>
+        </li>
+
+        <li class="@Html.IsSelected(controller: "AssignmentTbls") treeview">
+            <a href="@Url.Action("Index", "AssignmentTbls")">
+                <i class="fa fa-tasks"></i> <span>Assignment</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "AssignmentTbls")"><i class="fa fa-tasks"></i>Assignment</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "AssignmentTbls")"><i class="fa fa fa-upload"></i>New Assignment</a></li>
+            </ul>
+        </li>*@
             @*<li class="@Html.IsSelected(controller: "ExamTbls") treeview">
             <a href="@Url.Action("Index", "ExamTbls")">
                 <i class="fa fa-bar-chart"></i> <span>Exam</span>
@@ -96,17 +127,17 @@
             </ul>
         </li>*@
             @*<li class="@Html.IsSelected(controller: "Report") treeview">
-                <a href="@Url.Action("AttendanceReport", "Report")">
-                    <i class="fa fa-clock-o"></i> <span>Attendace Report</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li class="@Html.IsSelected(action: "AttendanceReport")"><a href="@Url.Action("AttendanceReport", "Report")"><i class="fa fa-clock-o"></i>Attendace Report</a></li>
-                    <li class="@Html.IsSelected(action: "AttendanceReportGenerate")"><a href="@Url.Action("AttendanceReportGenerate", "Report")"><i class="fa fa-download"></i>Download Report</a></li>
-                </ul>
-            </li>*@
+            <a href="@Url.Action("AttendanceReport", "Report")">
+                <i class="fa fa-clock-o"></i> <span>Attendace Report</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="@Html.IsSelected(action: "AttendanceReport")"><a href="@Url.Action("AttendanceReport", "Report")"><i class="fa fa-clock-o"></i>Attendace Report</a></li>
+                <li class="@Html.IsSelected(action: "AttendanceReportGenerate")"><a href="@Url.Action("AttendanceReportGenerate", "Report")"><i class="fa fa-download"></i>Download Report</a></li>
+            </ul>
+        </li>*@
         </ul>
     </section>
 </aside>
