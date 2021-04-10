@@ -10,7 +10,7 @@ using LearningHub.Models;
 
 namespace LearningHub.Controllers
 {
-    [Authorized(Roles = ContantValue.Admin)]
+    [Authorized(Roles = ContantValue.Staff)]
     public class VideoTblsController : Controller
     {
         private Entities db = new Entities();

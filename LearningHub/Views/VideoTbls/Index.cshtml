@@ -2,81 +2,102 @@
 
 @{
     ViewBag.Title = "Index";
-}
-
-@section Styles {
-    <!-- Custom styles for this page -->
-    <link href="~/Content/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
 }
 
 
-<div class="card-body">
-    <p>
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Video
+            <small>Videos list</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Assignment</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
         <div class="row">
-            <div class="col-md-4">
-                @Html.ActionLink("Create Video", "Create", new { area = "" }, new { @class = "btn btn-primary btn-user btn-block" })
-            </div>
+            <div class="col-xs-12">
+                <div class="box">
 
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="card-body">
+
+                            <table class="table table-bordered table-striped" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.VideoLink)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.VideoTitle)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.PublishedOn)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.DisplayOrder)</th>
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ChapterTbl.ChapterName)</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VideoLink)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.VideoTitle)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PublishedOn)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DisplayOrder)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ChapterTbl.ChapterName) <span> - </span> @Html.DisplayFor(modelItem => item.ChapterTbl.SubjectTbl.SubjectName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.VideoID }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.VideoID }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.VideoID })
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.VideoLink)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.VideoTitle)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.PublishedOn)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.DisplayOrder)</th>
+                                        <th rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.ChapterTbl.ChapterName)</th>
+                                        <th rowspan="1" colspan="1">Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </p>
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.VideoLink)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.VideoTitle)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.PublishedOn)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.DisplayOrder)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ChapterTbl.ChapterName)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VideoLink)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.VideoTitle)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PublishedOn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DisplayOrder)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ChapterTbl.ChapterName) <span> - </span> @Html.DisplayFor(modelItem => item.ChapterTbl.SubjectTbl.SubjectName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.VideoID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.VideoID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.VideoID })
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+    </section>
 </div>
 @section scripts
 {
-    <!-- Page level plugins -->
-    <script src="~/Content/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="~/Content/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="~/Content/Admin/js/demo/datatables-demo.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
 }
