@@ -1,69 +1,176 @@
 ﻿@model IEnumerable<LearningHub.Models.ExamQuestionTbl>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/Staff/_StaffBase.cshtml";
 }
 
-<h2>Index</h2>
+@*<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Question)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OptionA)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OptionB)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OptionC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OptionD)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Answer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ExamTbl.ExamName)
-        </th>
-        <th></th>
-    </tr>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OptionD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Answer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamTbl.ExamName)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Question)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OptionA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OptionB)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OptionC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OptionD)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Answer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExamTbl.ExamName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ExamQuestionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ExamQuestionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ExamQuestionID })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OptionA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OptionB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OptionC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OptionD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExamTbl.ExamName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ExamQuestionID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ExamQuestionID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ExamQuestionID })
+                </td>
+            </tr>
+        }
+
+    </table>*@
+
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Parents
+            <small>Parents List</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Parent List</a></li>
+
+        </ol>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped" id="dataTable" role="grid" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Question)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionA)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionB)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionC)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionD)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Answer)</th>
+                                            <th rowspan="1" colspan="1">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                        <tr role="row">
+                                            <td class="sorting_1">
+                                                @Html.DisplayFor(modelItem => item.Question)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptionA)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptionB)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptionC)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OptionD)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Answer)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.ExamQuestionID }) |
+                                                @*@Html.ActionLink("Details", "Details", new { id = item.ParentID }) |*@
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.ExamQuestionID })
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Question)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionA)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionB)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionC)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.OptionD)</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">@Html.DisplayNameFor(model => model.Answer)</th>
+                                            <th rowspan="1" colspan="1">Delete</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+@section Scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "pageLength": 20,
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            })
+        })</script>
 }
-
-</table>

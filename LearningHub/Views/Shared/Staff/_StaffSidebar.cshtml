@@ -80,7 +80,7 @@
                     <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "VideoTbls")"><i class="fa fa fa-upload"></i>New Video</a></li>
                 </ul>
             </li>
-            @*<li class="@Html.IsSelected(controller: "ExamTbls") treeview">
+            <li class="@Html.IsSelected(controller: "ExamTbls") treeview">
             <a href="@Url.Action("Index", "ExamTbls")">
                 <i class="fa fa-bar-chart"></i> <span>Exam</span>
                 <span class="pull-right-container">
@@ -89,6 +89,7 @@
             </a>
             <ul class="treeview-menu">
                 <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ExamTbls")"><i class="fa fa-bar-chart"></i>Exam</a></li>
+                <li class="@Html.IsSelected(action: "Create")"><a href="@Url.Action("Create", "ExamTbls")"><i class="fa fa-bar-chart"></i>New Exam</a></li>
             </ul>
         </li>
         <li class="@Html.IsSelected(controller: "ExamQuestionTbls") treeview">
@@ -102,7 +103,7 @@
                 <li class="@Html.IsSelected(action: "Index")"><a href="@Url.Action("Index", "ExamQuestionTbls")"><i class="fa fa-pencil-square-o"></i>Exam Question</a></li>
                 <li class="@Html.IsSelected(action: "ExamQuestionUpload")"><a href="@Url.Action("ExamQuestionUpload", "ExamQuestionTbls")"><i class="fa fa-pencil-square-o"></i>Question Upload</a></li>
             </ul>
-        </li>*@
+        </li>
 
             <li class="@Html.IsSelected(controller: "Report") treeview">
                 <a href="@Url.Action("AttendanceReport", "Report")">

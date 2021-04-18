@@ -26,7 +26,6 @@ namespace LearningHub.Models
         }
     
         public virtual DbSet<AdminTbl> AdminTbls { get; set; }
-        public virtual DbSet<APITokenTbl> APITokenTbls { get; set; }
         public virtual DbSet<AssignmentTbl> AssignmentTbls { get; set; }
         public virtual DbSet<ChapterTbl> ChapterTbls { get; set; }
         public virtual DbSet<ClassTbl> ClassTbls { get; set; }
@@ -53,5 +52,6 @@ namespace LearningHub.Models
         public virtual DbSet<SubjectTbl> SubjectTbls { get; set; }
         public virtual DbSet<SuperAdminTbl> SuperAdminTbls { get; set; }
         public virtual DbSet<VideoTbl> VideoTbls { get; set; }
+        public virtual DbSet<APITokenTbl> APITokenTbls { get; set; }
     }
 }

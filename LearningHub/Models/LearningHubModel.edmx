@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LearningHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LearningHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AdminTbl">
           <Key>
             <PropertyRef Name="AdminID" />
@@ -827,8 +827,7 @@
             <End Role="VideoTbl" EntitySet="VideoTbl" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LearningHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -840,23 +839,6 @@
           <Property Name="CredID" Type="Int64" />
           <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CredentialTbl" Relationship="Self.FK_AdminTbl_CredentialTbl" FromRole="AdminTbl" ToRole="CredentialTbl" />
-        </EntityType>
-        <EntityType Name="APITokenTbl">
-          <Key>
-            <PropertyRef Name="APITokenID" />
-          </Key>
-          <Property Name="APITokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="APIName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="APIKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SenderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsTest" Type="Boolean" />
-          <Property Name="IsChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsUnicord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IsFlash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <Property Name="Route" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AssignmentTbl">
           <Key>
@@ -1564,7 +1546,6 @@
         </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AdminTbls" EntityType="Self.AdminTbl" />
-          <EntitySet Name="APITokenTbls" EntityType="Self.APITokenTbl" />
           <EntitySet Name="AssignmentTbls" EntityType="Self.AssignmentTbl" />
           <EntitySet Name="ChapterTbls" EntityType="Self.ChapterTbl" />
           <EntitySet Name="ClassTbls" EntityType="Self.ClassTbl" />
@@ -1715,7 +1696,25 @@
             <End Role="StudentTbl" EntitySet="StudentTbls" />
             <End Role="StudentsAttentanceTbl" EntitySet="StudentsAttentanceTbls" />
           </AssociationSet>
+          <EntitySet Name="APITokenTbls" EntityType="LearningHubModel.APITokenTbl" />
         </EntityContainer>
+        <EntityType Name="APITokenTbl">
+          <Key>
+            <PropertyRef Name="APITokenID" />
+          </Key>
+          <Property Name="APITokenID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APIName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APIKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SenderID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsTest" Type="Boolean" />
+          <Property Name="IsChannel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsUnicord" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsFlash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EnteredOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Route" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1728,24 +1727,6 @@
                 <ScalarProperty Name="AdminID" ColumnName="AdminID" />
                 <ScalarProperty Name="CredID" ColumnName="CredID" />
                 <ScalarProperty Name="AdminName" ColumnName="AdminName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="APITokenTbls">
-            <EntityTypeMapping TypeName="LearningHubModel.APITokenTbl">
-              <MappingFragment StoreEntitySet="APITokenTbl">
-                <ScalarProperty Name="APITokenID" ColumnName="APITokenID" />
-                <ScalarProperty Name="APIName" ColumnName="APIName" />
-                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
-                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsTest" ColumnName="IsTest" />
-                <ScalarProperty Name="IsChannel" ColumnName="IsChannel" />
-                <ScalarProperty Name="IsUnicord" ColumnName="IsUnicord" />
-                <ScalarProperty Name="IsFlash" ColumnName="IsFlash" />
-                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-                <ScalarProperty Name="Route" ColumnName="Route" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2043,6 +2024,24 @@
                 <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
                 <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APITokenTbls">
+            <EntityTypeMapping TypeName="LearningHubModel.APITokenTbl">
+              <MappingFragment StoreEntitySet="APITokenTbl">
+                <ScalarProperty Name="Route" ColumnName="Route" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="EnteredOn" ColumnName="EnteredOn" />
+                <ScalarProperty Name="IsFlash" ColumnName="IsFlash" />
+                <ScalarProperty Name="IsUnicord" ColumnName="IsUnicord" />
+                <ScalarProperty Name="IsChannel" ColumnName="IsChannel" />
+                <ScalarProperty Name="IsTest" ColumnName="IsTest" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="APIName" ColumnName="APIName" />
+                <ScalarProperty Name="APITokenID" ColumnName="APITokenID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

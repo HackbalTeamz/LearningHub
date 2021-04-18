@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="aefdfb0de4cb461ebe3848386e9854f9" Name="Diagram1">
         <EntityTypeShape EntityType="LearningHubModel.AdminTbl" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LearningHubModel.APITokenTbl" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LearningHubModel.AssignmentTbl" Width="1.5" PointX="7.5" PointY="20.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LearningHubModel.ChapterTbl" Width="1.5" PointX="7.5" PointY="26.25" IsExpanded="true" />
         <EntityTypeShape EntityType="LearningHubModel.ClassTbl" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
@@ -64,6 +63,7 @@
         <AssociationConnector Association="LearningHubModel.FK_StudentExamResultTbl_StudentExamTbl" ManuallyRouted="false" />
         <AssociationConnector Association="LearningHubModel.FK_StudentExamTbl_StudentTbl" ManuallyRouted="false" />
         <AssociationConnector Association="LearningHubModel.FK_StudentsAttentanceTbl_StudentTbl" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LearningHubModel.APITokenTbl" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

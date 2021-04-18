@@ -75,7 +75,7 @@ namespace LearningHub.Controllers
                                     smtp.Host = "smtp.gmail.com"; //for gmail host  
                                     smtp.EnableSsl = true;
                                     smtp.UseDefaultCredentials = true;
-                                    smtp.Credentials = new NetworkCredential("hackbalbusiness@gmail.com", "9539391527");
+                                    smtp.Credentials = new NetworkCredential("hackbalbusiness@gmail.com", "H@ckbal123");
                                     smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                                     smtp.Send(message);
                                 }
